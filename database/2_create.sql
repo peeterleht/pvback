@@ -109,8 +109,8 @@ CREATE TABLE time_log (
 CREATE TABLE "user" (
                         id serial  NOT NULL,
                         role_id int  NOT NULL,
-                        password int  NOT NULL,
                         email varchar(255)  NOT NULL,
+                        password int  NOT NULL,
                         name char(255)  NOT NULL,
                         status char(1)  NOT NULL,
                         CONSTRAINT user_ak_1 UNIQUE (email) NOT DEFERRABLE  INITIALLY IMMEDIATE,
