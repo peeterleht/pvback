@@ -1,11 +1,24 @@
 package com.valiit.pvback.business.login;
 
+import com.valiit.pvback.business.Status;
+import com.valiit.pvback.domain.user.User;
+import com.valiit.pvback.domain.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class LoginService {
+    private UserRepository userRepository;
+
+    public void login(String email, String password) {
+        Optional<User> optionalUser = userRepository.findUserBy(email, password, Status.ACTIVE);
+
+        User user
+
+    }
 
 
     // todo: HAPPY PATH

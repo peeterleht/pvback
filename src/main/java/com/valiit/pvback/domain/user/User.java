@@ -22,9 +22,10 @@ public class User {
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
+    @Size(max = 255)
     @NotNull
     @Column(name = "password", nullable = false)
-    private Integer password;
+    private String password;
 
     @Size(max = 255)
     @NotNull
