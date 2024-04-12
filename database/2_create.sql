@@ -23,7 +23,7 @@ CREATE TABLE company_user (
 -- Table: part
 CREATE TABLE part (
                       id serial  NOT NULL,
-                      name varchar(255)  NOT NULL,
+                      name char(255)  NOT NULL,
                       volume int  NOT NULL,
                       end_deadline date  NOT NULL,
                       status char(1)  NOT NULL,
@@ -45,8 +45,8 @@ CREATE TABLE proccess_part (
 CREATE TABLE process (
                          id serial  NOT NULL,
                          project_id int  NOT NULL,
-                         name varchar(255)  NOT NULL,
-                         description varchar(255)  NOT NULL,
+                         name char(255)  NOT NULL,
+                         description char(255)  NOT NULL,
                          project_role_id int  NOT NULL,
                          status char(1)  NOT NULL,
                          CONSTRAINT process_pk PRIMARY KEY (id)
@@ -55,18 +55,18 @@ CREATE TABLE process (
 -- Table: project
 CREATE TABLE project (
                          id serial  NOT NULL,
-                         code varchar(255)  NOT NULL,
-                         name varchar(255)  NOT NULL,
-                         client varchar(255)  NOT NULL,
-                         bank_link varchar(255)  NOT NULL,
-                         status varchar(255)  NOT NULL,
+                         code char(255)  NOT NULL,
+                         name char(255)  NOT NULL,
+                         client char(255)  NOT NULL,
+                         bank_link char(255)  NOT NULL,
+                         status char(255)  NOT NULL,
                          CONSTRAINT project_pk PRIMARY KEY (id)
 );
 
 -- Table: project_role
 CREATE TABLE project_role (
                               id serial  NOT NULL,
-                              name varchar(255)  NOT NULL,
+                              name char(255)  NOT NULL,
                               CONSTRAINT project_role_pk PRIMARY KEY (id)
 );
 
@@ -76,7 +76,7 @@ CREATE TABLE project_user (
                               user_id int  NOT NULL,
                               project_role_id int  NOT NULL,
                               project_id int  NOT NULL,
-                              color_rgb varchar(6)  NOT NULL,
+                              color_rgb char(6)  NOT NULL,
                               status char(1)  NOT NULL,
                               CONSTRAINT project_user_pk PRIMARY KEY (id)
 );
@@ -84,7 +84,7 @@ CREATE TABLE project_user (
 -- Table: role
 CREATE TABLE role (
                       id serial  NOT NULL,
-                      role varchar(30)  NOT NULL,
+                      role char(30)  NOT NULL,
                       CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
@@ -109,8 +109,8 @@ CREATE TABLE time_log (
 CREATE TABLE "user" (
                         id serial  NOT NULL,
                         role_id int  NOT NULL,
-                        email varchar(255)  NOT NULL,
-                        password int  NOT NULL,
+                        email char(255)  NOT NULL,
+                        password char(255)  NOT NULL,
                         name char(255)  NOT NULL,
                         status char(1)  NOT NULL,
                         CONSTRAINT user_ak_1 UNIQUE (email) NOT DEFERRABLE  INITIALLY IMMEDIATE,
