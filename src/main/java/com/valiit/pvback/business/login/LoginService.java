@@ -1,5 +1,6 @@
 package com.valiit.pvback.business.login;
 
+import com.valiit.pvback.business.Status;
 import com.valiit.pvback.domain.user.User;
 import com.valiit.pvback.domain.user.UserRepository;
 import lombok.AllArgsConstructor;
@@ -11,13 +12,11 @@ import java.util.Optional;
 @AllArgsConstructor
 public class LoginService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public void login(String email, String password){
-        Optional<User>optionalUser = userRepository.findUserById(email,password);
-
+    public void login(String email, String password) {
+        Optional<User> optionalUser = userRepository.findUserBy(email, password, Status.ACTIVE);
     }
-
 
 
     // todo: HAPPY PATH
