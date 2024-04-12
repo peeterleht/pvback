@@ -1,6 +1,8 @@
 package com.valiit.pvback.business.login;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -8,6 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     private LoginService loginService;
+
+    @GetMapping("/login")
+    public void login(@RequestParam String email, @RequestParam String password) {
+        loginService.login(email, password);
+    }
+
+
 
     // todo: raja kaardistus HTTP  meetod (GET, POST, jne) ja URL
     // todo: meetodi nimi
