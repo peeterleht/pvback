@@ -1,5 +1,7 @@
 package com.valiit.pvback.business.login;
 
+import com.valiit.pvback.business.login.dto.LoginResponse;
+import com.valiit.pvback.domain.user.UserMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,12 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class LoginController {
 
+    private final UserMapper userMapper;
     private LoginService loginService;
 
     @GetMapping("/login")
-    public void login(@RequestParam String email, @RequestParam String password) {
-        loginService.login(email, password);
+    public LoginResponse login(@RequestParam String email, @RequestParam String password) {
+        return loginService.login(email, password);
     }
+
 
 
 

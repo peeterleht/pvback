@@ -1,8 +1,11 @@
 package com.valiit.pvback.business.login;
 
 import com.valiit.pvback.business.Status;
+import com.valiit.pvback.business.login.dto.LoginResponse;
 import com.valiit.pvback.domain.user.User;
+import com.valiit.pvback.domain.user.UserMapper;
 import com.valiit.pvback.domain.user.UserRepository;
+import com.valiit.pvback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +16,12 @@ import java.util.Optional;
 public class LoginService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public void login(String email, String password) {
+    public LoginResponse login(String email, String password) {
         Optional<User> optionalUser = userRepository.findUserBy(email, password, Status.ACTIVE);
+        User user = ValidationService.getValidExistingUser(optionalUser);
+        return userMapper.toLoginResponse(user);
     }
 
 
@@ -43,3 +49,4 @@ public class LoginService {
     // todo: Vigade kontrollimiseks kasutada ValidationService klass src/main/java/com/valiit/pvback/infrastructure/validation/ValidationService.java
 
 }
+
