@@ -17,5 +17,5 @@ public class LoginResponse implements Serializable {
     private Integer userId;
     private String roleName;
     private String projectRoleName;
-    private Integer comapnyId;
+    private Integer companyId;
 }

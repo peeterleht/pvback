@@ -21,7 +21,13 @@ public class LoginService {
     public LoginResponse login(String email, String password) {
         Optional<User> optionalUser = userRepository.findUserBy(email, password, Status.ACTIVE);
         User user = ValidationService.getValidExistingUser(optionalUser);
-        return userMapper.toLoginResponse(user);
+        LoginResponse loginResponse = userMapper.toLoginResponse(user);
+
+        // todo: vaja ylesse leida companyUser objekt (entity) useri v6i  userId abil
+        // todo: companyUserRepository abil
+        // todo: taiendada loginResponse infot  projectRoleName ja companyId; osas
+
+        return loginResponse;
     }
 
 

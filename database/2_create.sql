@@ -84,7 +84,7 @@ CREATE TABLE project_user (
 -- Table: role
 CREATE TABLE role (
                       id serial  NOT NULL,
-                      role char(30)  NOT NULL,
+                      name char(30)  NOT NULL,
                       CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
@@ -100,7 +100,7 @@ CREATE TABLE time_log (
                           id serial  NOT NULL,
                           user_id int  NOT NULL,
                           project_id int  NOT NULL,
-                          minutues int  NOT NULL,
+                          minutes int  NOT NULL,
                           timestamp timestamp  NOT NULL,
                           CONSTRAINT time_log_pk PRIMARY KEY (id)
 );
