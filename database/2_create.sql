@@ -6,7 +6,7 @@
 CREATE TABLE company (
                          id serial  NOT NULL,
                          subscription_type_id int  NOT NULL,
-                         name int  NOT NULL,
+                         name varchar(255)  NOT NULL,
                          image_data bytea  NULL,
                          CONSTRAINT company_pk PRIMARY KEY (id)
 );
