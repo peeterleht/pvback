@@ -1,8 +1,13 @@
 package com.valiit.pvback.business.login;
 
 import com.valiit.pvback.business.Status;
+import com.valiit.pvback.business.login.dto.LoginResponse;
+import com.valiit.pvback.domain.company.companyuser.CompanyUser;
+import com.valiit.pvback.domain.company.companyuser.CompanyUserRepository;
 import com.valiit.pvback.domain.user.User;
+import com.valiit.pvback.domain.user.UserMapper;
 import com.valiit.pvback.domain.user.UserRepository;
+import com.valiit.pvback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +16,25 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class LoginService {
-    private UserRepository userRepository;
 
-    public void login(String email, String password) {
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+    private final CompanyUserRepository companyUserRepository;
+
+    public LoginResponse login(String email, String password) {
         Optional<User> optionalUser = userRepository.findUserBy(email, password, Status.ACTIVE);
+        User user = ValidationService.getValidExistingUser(optionalUser);
+        LoginResponse loginResponse = userMapper.toLoginResponse(user);
+        handleCompanyDetails(loginResponse, user);
+        return loginResponse;
+    }
 
-
+    private void handleCompanyDetails(LoginResponse loginResponse, User user) {
+        if (!"admin".equals(loginResponse.getRoleName())) {
+            CompanyUser companyUser = companyUserRepository.findCompanyUser(user.getId());
+            loginResponse.setCompanyId(companyUser.getCompany().getId());
+            loginResponse.setProjectRoleName(companyUser.getProjectRole().getName());
+        }
     }
 
 
@@ -44,3 +62,4 @@ public class LoginService {
     // todo: Vigade kontrollimiseks kasutada ValidationService klass src/main/java/com/valiit/pvback/infrastructure/validation/ValidationService.java
 
 }
+
