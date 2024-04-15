@@ -15,5 +15,5 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class LoginResponse implements Serializable {
     Integer userId;
-    String roleName;
+    Integer roleId;
 }
