@@ -1,5 +1,6 @@
 package com.valiit.pvback.business.login;
 
+import com.valiit.pvback.business.login.dto.LoginResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,11 +13,9 @@ public class LoginController {
     private LoginService loginService;
 
     @GetMapping("/login")
-    public void login(@RequestParam String email, @RequestParam String password) {
-        loginService.login(email, password);
+    public LoginResponse login(@RequestParam String email, @RequestParam String password) {
+        return loginService.login(email, password);
     }
-
-
 
     // todo: raja kaardistus HTTP  meetod (GET, POST, jne) ja URL
     // todo: meetodi nimi
@@ -25,5 +24,4 @@ public class LoginController {
     // todo: l6puks tekib mingi objekt mingist klassist (loginResponse, mida see meetod tagastab) aga alguses progedes void meetod
     // todo: actionit siin ei tee
     // todo: samanimelised meetodid
-
 }

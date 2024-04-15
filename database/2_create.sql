@@ -30,15 +30,15 @@ CREATE TABLE part (
                       CONSTRAINT part_pk PRIMARY KEY (id)
 );
 
--- Table: proccess_part
-CREATE TABLE proccess_part (
+-- Table: process_part
+CREATE TABLE process_part (
                                id serial  NOT NULL,
                                part_id int  NOT NULL,
                                process_id int  NOT NULL,
                                project_user_id int  NOT NULL,
                                deadline date  NULL,
                                status char(1)  NOT NULL,
-                               CONSTRAINT proccess_part_pk PRIMARY KEY (id)
+                               CONSTRAINT process_part_pk PRIMARY KEY (id)
 );
 
 -- Table: process
@@ -150,24 +150,24 @@ ALTER TABLE company_user ADD CONSTRAINT company_user_user
             INITIALLY IMMEDIATE
 ;
 
--- Reference: proccess_part_part (table: proccess_part)
-ALTER TABLE proccess_part ADD CONSTRAINT proccess_part_part
+-- Reference: process_part_part (table: process_part)
+ALTER TABLE process_part ADD CONSTRAINT process_part_part
     FOREIGN KEY (part_id)
         REFERENCES part (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
 
--- Reference: proccess_part_process (table: proccess_part)
-ALTER TABLE proccess_part ADD CONSTRAINT proccess_part_process
+-- Reference: process_part_process (table: process_part)
+ALTER TABLE process_part ADD CONSTRAINT process_part_process
     FOREIGN KEY (process_id)
         REFERENCES process (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
 
--- Reference: proccess_part_project_user (table: proccess_part)
-ALTER TABLE proccess_part ADD CONSTRAINT proccess_part_project_user
+-- Reference: process_part_project_user (table: process_part)
+ALTER TABLE process_part ADD CONSTRAINT process_part_project_user
     FOREIGN KEY (project_user_id)
         REFERENCES project_user (id)
         NOT DEFERRABLE
