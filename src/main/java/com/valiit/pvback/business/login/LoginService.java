@@ -23,6 +23,7 @@ public class LoginService {
         User user = ValidationService.getValidExistingUser(optionalUser);
         LoginResponse loginResponse = userMapper.toLoginResponse(user);
 
+
         // todo: vaja ylesse leida companyUser objekt (entity) useri v6i  userId abil
         // todo: companyUserRepository abil
         // todo: taiendada loginResponse infot  projectRoleName ja companyId; osas
