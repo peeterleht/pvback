@@ -2,6 +2,8 @@ package com.valiit.pvback.business.login;
 
 import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.login.dto.LoginResponse;
+import com.valiit.pvback.domain.company.companyuser.CompanyUser;
+import com.valiit.pvback.domain.company.companyuser.CompanyUserRepository;
 import com.valiit.pvback.domain.user.User;
 import com.valiit.pvback.domain.user.UserMapper;
 import com.valiit.pvback.domain.user.UserRepository;
@@ -17,18 +19,22 @@ public class LoginService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final CompanyUserRepository companyUserRepository;
 
     public LoginResponse login(String email, String password) {
         Optional<User> optionalUser = userRepository.findUserBy(email, password, Status.ACTIVE);
         User user = ValidationService.getValidExistingUser(optionalUser);
         LoginResponse loginResponse = userMapper.toLoginResponse(user);
-
-
-        // todo: vaja ylesse leida companyUser objekt (entity) useri v6i  userId abil
-        // todo: companyUserRepository abil
-        // todo: taiendada loginResponse infot  projectRoleName ja companyId; osas
-
+        handleCompanyDetails(loginResponse, user);
         return loginResponse;
+    }
+
+    private void handleCompanyDetails(LoginResponse loginResponse, User user) {
+        if (!"admin".equals(loginResponse.getRoleName())) {
+            CompanyUser companyUser = companyUserRepository.findCompanyUser(user.getId());
+            loginResponse.setCompanyId(companyUser.getCompany().getId());
+            loginResponse.setProjectRoleName(companyUser.getProjectRole().getName());
+        }
     }
 
 
