@@ -1,9 +1,6 @@
 package com.valiit.pvback.business.project;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
-import lombok.Value;
 
 import java.io.Serializable;
 

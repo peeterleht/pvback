@@ -1,5 +1,6 @@
 package com.valiit.pvback.domain.project;
 
+import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.project.ProjectInfo;
 import org.mapstruct.*;
 
@@ -10,10 +11,6 @@ public interface ProjectMapper {
     @Mapping(source = "projectName", target = "name")
     @Mapping(source = "projectClient", target = "client")
     @Mapping(source = "projectBankLink", target = "bankLink")
+    @Mapping(constant = Status.ACTIVE, target = "status")
     Project toProject(ProjectInfo projectInfo);
-
-    ProjectInfo toDto(Project project);
-
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Project partialUpdate(ProjectInfo projectInfo, @MappingTarget Project project);
 }

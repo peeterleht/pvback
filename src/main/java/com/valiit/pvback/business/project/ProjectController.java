@@ -17,5 +17,4 @@ public class ProjectController {
     public void addProject(@RequestBody @Valid ProjectInfo projectInfo) {
         projectService.createAndSaveProject(projectInfo);
     }
-
 }
