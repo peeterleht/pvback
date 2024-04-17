@@ -1,8 +1,10 @@
 
 package com.valiit.pvback.domain.user;
 
+import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.login.dto.LoginResponse;
 import com.valiit.pvback.business.user.UserInfo;
+import com.valiit.pvback.business.user.UserInfoExtended;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -20,4 +22,11 @@ public interface UserMapper {
     UserInfo toUserInfo(User user);
 
     List<UserInfo> toUserInfos(List<User> users);
+
+    @Mapping(constant = Status.UNDEFINED,target = "role.name")
+    @Mapping(source = "userPassword",target = "password")
+    @Mapping(source = "userEmail",target = "email")
+    @Mapping(source = "userName",target = "name")
+    @Mapping(constant = Status.ACTIVE, target = "status")
+    User toUser(UserInfoExtended userInfoExtended);
 }
