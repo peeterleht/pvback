@@ -2,6 +2,9 @@ package com.valiit.pvback.business.user;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
 import java.io.Serializable;
@@ -9,7 +12,9 @@ import java.io.Serializable;
 /**
  * DTO for {@link com.valiit.pvback.domain.user.User}
  */
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserInfo implements Serializable {
     String roleName;
     @NotNull
