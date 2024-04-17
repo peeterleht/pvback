@@ -1,4 +1,4 @@
-package com.valiit.pvback.business.project;
+package com.valiit.pvback.business.project.dto;
 
 import lombok.Data;
 

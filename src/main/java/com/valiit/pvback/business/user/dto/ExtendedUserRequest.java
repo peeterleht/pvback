@@ -1,4 +1,4 @@
-package com.valiit.pvback.business.user;
+package com.valiit.pvback.business.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserInfoExtended extends UserInfo {
-    private String userPassword;
+public class ExtendedUserRequest extends UserRequest {
+    private String companyName;
+    private Integer subscriptionTypeId;
+    private String imageDate;
 }

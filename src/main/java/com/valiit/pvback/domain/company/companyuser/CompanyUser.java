@@ -33,4 +33,8 @@ public class CompanyUser {
     @JoinColumn(name = "project_role_id", nullable = false)
     private ProjectRole projectRole;
 
+    @NotNull
+    @Column(name = "is_company_admin", nullable = false)
+    private Boolean isCompanyAdmin = false;
+
 }

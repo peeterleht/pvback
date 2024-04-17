@@ -1,4 +1,4 @@
-package com.valiit.pvback.business.user;
+package com.valiit.pvback.business.user.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -16,13 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInfo implements Serializable {
-    String roleName;
-    @NotNull
-    @Size(max = 255)
-    String userEmail;
-    @NotNull
-    @Size(max = 255)
-    String userName;
-    @NotNull
-    String userStatus;
+    private Integer userId;
+    private String userName;
+    private String userEmail;
 }

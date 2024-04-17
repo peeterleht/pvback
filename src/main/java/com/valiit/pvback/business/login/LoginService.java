@@ -2,7 +2,6 @@ package com.valiit.pvback.business.login;
 
 import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.login.dto.LoginResponse;
-import com.valiit.pvback.business.user.UserInfoExtended;
 import com.valiit.pvback.domain.company.companyuser.CompanyUser;
 import com.valiit.pvback.domain.company.companyuser.CompanyUserRepository;
 import com.valiit.pvback.domain.user.User;
@@ -38,10 +37,6 @@ public class LoginService {
         }
     }
 
-    public void register(UserInfoExtended userInfoExtended) {
-        User user = userMapper.toUser(userInfoExtended);
-        userRepository.save(user);
-    }
 
 
     // todo: HAPPY PATH

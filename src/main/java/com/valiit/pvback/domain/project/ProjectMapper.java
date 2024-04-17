@@ -1,7 +1,7 @@
 package com.valiit.pvback.domain.project;
 
 import com.valiit.pvback.business.Status;
-import com.valiit.pvback.business.project.ProjectInfo;
+import com.valiit.pvback.business.project.dto.ProjectInfo;
 import org.mapstruct.*;
 
 import java.util.List;
