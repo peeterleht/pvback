@@ -14,10 +14,10 @@ INSERT INTO manager.project(id, code, name, client, bank_link, status) VALUES (d
 INSERT INTO manager.subscription_type(id, tier) VALUES (default, 1);
 INSERT INTO manager.subscription_type(id, tier) VALUES (default, 2);
 
-INSERT INTO manager.company(id, subscription_type_id, name, image_data) values (default, 1, 'ehitus', null);
+INSERT INTO manager.company(id, subscription_type_id, name, logo) values (default, 1, 'ehitus', null);
 
 INSERT INTO manager.company_user(id, company_id, user_id, project_role_id, is_company_admin) VALUES (default,1,2,1, true);
-INSERT INTO manager.company_user(id, company_id, user_id, project_role_id, is_company_admin) VALUES (default,1,3,2, true);
+INSERT INTO manager.company_user(id, company_id, user_id, project_role_id, is_company_admin) VALUES (default,1,3,2, false);
 
 /*INSERT INTO manager.time_log(id, user_id, project_id, minutes, timestamp) VALUES (default,1,1,60,2024-07-20 12:15:15);*/
 

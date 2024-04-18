@@ -1,5 +1,7 @@
 package com.valiit.pvback.business.user.dto;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,7 +12,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExtendedUserRequest extends UserRequest {
-    private String companyName;
+    @NotNull
     private Integer subscriptionTypeId;
-    private String imageDate;
+    @NotNull
+    @Size(max = 255)
+    private String companyName;
+    private String logo;
 }

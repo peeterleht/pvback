@@ -8,18 +8,18 @@ CREATE TABLE company
     id                   serial       NOT NULL,
     subscription_type_id int          NOT NULL,
     name                 varchar(255) NOT NULL,
-    image_data           bytea        NULL,
+    logo                 bytea        NULL,
     CONSTRAINT company_pk PRIMARY KEY (id)
 );
 
 -- Table: company_user
 CREATE TABLE company_user
 (
-    id              serial  NOT NULL,
-    company_id      int     NOT NULL,
-    user_id         int     NOT NULL,
-    is_company_admin  boolean NOT NULL,
-    project_role_id int     NOT NULL,
+    id               serial  NOT NULL,
+    company_id       int     NOT NULL,
+    user_id          int     NOT NULL,
+    project_role_id  int     NOT NULL,
+    is_company_admin boolean NOT NULL,
     CONSTRAINT company_user_pk PRIMARY KEY (id)
 );
 
