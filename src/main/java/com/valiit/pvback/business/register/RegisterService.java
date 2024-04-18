@@ -71,9 +71,7 @@ public class RegisterService {
         companyUser.setIsCompanyAdmin(true);
     }
 
-
     private static boolean hasLogo(String logo) {
         return !logo.isEmpty();
     }
-
 }
