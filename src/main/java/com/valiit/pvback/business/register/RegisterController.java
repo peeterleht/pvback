@@ -2,10 +2,11 @@ package com.valiit.pvback.business.register;
 
 import com.valiit.pvback.business.user.dto.ExtendedUserRequest;
 import com.valiit.pvback.business.user.dto.UserRequest;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
