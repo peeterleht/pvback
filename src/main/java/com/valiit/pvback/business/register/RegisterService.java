@@ -5,6 +5,7 @@ import com.valiit.pvback.business.user.dto.UserRequest;
 import com.valiit.pvback.domain.company.Company;
 import com.valiit.pvback.domain.company.CompanyRepository;
 import com.valiit.pvback.domain.company.companyuser.CompanyUser;
+import com.valiit.pvback.domain.company.companyuser.CompanyUserRepository;
 import com.valiit.pvback.domain.company.subscriptiontype.SubscriptionType;
 import com.valiit.pvback.domain.company.subscriptiontype.SubscriptionTypeRepository;
 import com.valiit.pvback.domain.project.projectrole.ProjectRole;
@@ -31,6 +32,7 @@ public class RegisterService {
     private final SubscriptionTypeRepository subscriptionTypeRepository;
     private final CompanyRepository companyRepository;
     private final ProjectRoleRepository projectRoleRepository;
+    private final CompanyUserRepository companyUserRepository;
 
     public void registerUser(UserRequest request) {
         createAndSaveUser(request);
@@ -69,9 +71,12 @@ public class RegisterService {
         companyUser.setUser(user);
         companyUser.setProjectRole(projectRole);
         companyUser.setIsCompanyAdmin(true);
+        companyUserRepository.save(companyUser);
     }
+
 
     private static boolean hasLogo(String logo) {
         return !logo.isEmpty();
     }
+
 }
