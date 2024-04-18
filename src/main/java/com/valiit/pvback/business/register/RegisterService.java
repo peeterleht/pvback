@@ -42,13 +42,12 @@ public class RegisterService {
         createAndSaveCompanyUserAsAdmin(company, user);
     }
 
-    private void createAndSaveCompanyUserAsAdmin(Company company, User user) {
-        ProjectRole projectRole = projectRoleRepository.getReferenceById(PROJECT_MANAGER);
-        CompanyUser companyUser = new CompanyUser();
-        companyUser.setCompany(company);
-        companyUser.setUser(user);
-        companyUser.setProjectRole(projectRole);
-        companyUser.setIsCompanyAdmin(true);
+    private User createAndSaveUser(UserRequest request) {
+        Role role = roleRepository.getReferenceById(request.getRoleId());
+        User user = userMapper.toUser(request);
+        user.setRole(role);
+        userRepository.save(user);
+        return user;
     }
 
     private Company createAndSaveCompany(ExtendedUserRequest request) {
@@ -63,15 +62,18 @@ public class RegisterService {
         return company;
     }
 
+    private void createAndSaveCompanyUserAsAdmin(Company company, User user) {
+        ProjectRole projectRole = projectRoleRepository.getReferenceById(PROJECT_MANAGER);
+        CompanyUser companyUser = new CompanyUser();
+        companyUser.setCompany(company);
+        companyUser.setUser(user);
+        companyUser.setProjectRole(projectRole);
+        companyUser.setIsCompanyAdmin(true);
+    }
+
+
     private static boolean hasLogo(String logo) {
         return !logo.isEmpty();
     }
 
-    private User createAndSaveUser(UserRequest request) {
-        Role role = roleRepository.getReferenceById(request.getRoleId());
-        User user = userMapper.toUser(request);
-        user.setRole(role);
-        userRepository.save(user);
-        return user;
-    }
 }
