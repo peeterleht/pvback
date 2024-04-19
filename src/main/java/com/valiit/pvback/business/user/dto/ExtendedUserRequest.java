@@ -16,6 +16,6 @@ public class ExtendedUserRequest extends UserRequest {
     private Integer subscriptionTypeId;
     @NotNull
     @Size(max = 255)
-    private String companyName;
+    private String companyname;
     private String logo;
 }

@@ -58,7 +58,7 @@ public class RegisterService {
         SubscriptionType subscriptionType = subscriptionTypeRepository.getReferenceById(request.getSubscriptionTypeId());
         Company company = new Company();
         company.setSubscriptionType(subscriptionType);
-        company.setName(request.getCompanyName());
+        company.setName(request.getCompanyname());
         if (hasLogo(request.getLogo())) {
             company.setLogo(StringConverter.stringToBytes(request.getLogo()));
         }
