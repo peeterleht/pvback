@@ -20,7 +20,7 @@ public interface UserMapper {
 
     @Mapping(source = "password",target = "password")
     @Mapping(source = "email",target = "email")
-    @Mapping(source = "userName",target = "name")
+    @Mapping(source = "username",target = "name")
     @Mapping(constant = Status.ACTIVE, target = "status")
     User toUser(UserRequest extendedUserRequest);
 }

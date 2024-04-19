@@ -2,12 +2,15 @@ package com.valiit.pvback.business.register;
 
 import com.valiit.pvback.business.user.dto.ExtendedUserRequest;
 import com.valiit.pvback.business.user.dto.UserRequest;
-
+import com.valiit.pvback.domain.company.subscriptiontype.SubscriptionType;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -28,4 +31,8 @@ public class RegisterController {
         registerService.registerCompanyAdmin(request);
     }
 
+    @GetMapping("/subscriptionTypes")
+    public List<SubscriptionType> getSubscriptionTypes() {
+        return registerService.getSubscriptionTypes();
+    }
 }

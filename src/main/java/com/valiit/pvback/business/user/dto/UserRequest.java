@@ -18,5 +18,5 @@ public class UserRequest implements Serializable {
     @NotNull
     private String password;
     @NotNull
-    private String userName;
+    private String username;
 }
