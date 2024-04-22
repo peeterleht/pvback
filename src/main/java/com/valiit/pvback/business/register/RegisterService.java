@@ -19,6 +19,8 @@ import com.valiit.pvback.util.StringConverter;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static com.valiit.pvback.business.ProjectRole.PROJECT_MANAGER;
 
 @Service
@@ -56,7 +58,7 @@ public class RegisterService {
         SubscriptionType subscriptionType = subscriptionTypeRepository.getReferenceById(request.getSubscriptionTypeId());
         Company company = new Company();
         company.setSubscriptionType(subscriptionType);
-        company.setName(request.getCompanyName());
+        company.setName(request.getCompanyname());
         if (hasLogo(request.getLogo())) {
             company.setLogo(StringConverter.stringToBytes(request.getLogo()));
         }
@@ -79,4 +81,9 @@ public class RegisterService {
         return !logo.isEmpty();
     }
 
+    public List<SubscriptionType> getSubscriptionTypes() {
+        //        SubscriptionType subscriptionType = new SubscriptionType();
+//        subscriptionType.setId(subscriptionType.getId());
+        return subscriptionTypeRepository.findAll();
+    }
 }
