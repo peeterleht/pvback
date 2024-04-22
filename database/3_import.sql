@@ -20,6 +20,26 @@ INSERT INTO manager.company(id, subscription_type_id, name, logo) values (defaul
 INSERT INTO manager.company_user(id, company_id, user_id, project_role_id, is_company_admin) VALUES (default,1,2,1, true);
 INSERT INTO manager.company_user(id, company_id, user_id, project_role_id, is_company_admin) VALUES (default,1,3,2, false);
 
+INSERT INTO manager.process (id, project_id, name, description, project_role_id, status) VALUES (default, 1, 'vundament', 'tee midagi', 1, 'A');
+INSERT INTO manager.process (id, project_id, name, description, project_role_id, status) VALUES (default, 1, 'seinad', 'tee midagi', 2, 'A');
+INSERT INTO manager.process (id, project_id, name, description, project_role_id, status) VALUES (default, 1, 'katus', 'tee midagi', 2, 'A');
+INSERT INTO manager.process (id, project_id, name, description, project_role_id, status) VALUES (default, 1, 'r6du', 'tee midagi', 2, 'A');
+
+INSERT INTO manager.part (id, name, volume, end_deadline, status) VALUES (default, 'maja 1', 3, '2024-04-22', 'A');
+INSERT INTO manager.part (id, name, volume, end_deadline, status) VALUES (default, 'maja 2', 56, '2024-04-11', 'A');
+
+
+
+INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 1, 1, 1, null, null, 'P');
+INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 1, 2, 2, null, null, 'P');
+INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 1, 3, 2, null, null, 'P');
+INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 1, 4, 2, null, null, 'P');
+INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 2, 1, 1, null, null, 'P');
+INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 2, 2, 2, null, null, 'P');
+INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 2, 3, 2, null, null, 'P');
+INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 2, 4, 2, null, null, 'P');
+
+
 /*INSERT INTO manager.time_log(id, user_id, project_id, minutes, timestamp) VALUES (default,1,1,60,2024-07-20 12:15:15);*/
 
 /*INSERT INTO manager.project_user(id, user_id, project_role_id, project_id, color_rgb, status) VALUES (default,7,2,1,'123123','A');

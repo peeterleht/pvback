@@ -13,9 +13,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompanyUserInfo implements Serializable {
-    private Integer id;
+    private Integer userId;
     private String userEmail;
     private String userName;
     private String userStatus;
+    private String hoursStatus;
     private String projectRoleName;
 }

@@ -29,7 +29,10 @@ private final CompanyUserMapper companyUserMapper;
     }
 
     public List<CompanyUserInfo> findUsersByCompanyId(Integer companyId) {
-        List<CompanyUser> companyUsers = companyUserRepository.findByCompany_Id(companyId);
-        return companyUserMapper.toCompanyUserInfos(companyUsers);
+        List<CompanyUser> companyUsers = companyUserRepository.findCompanyUsersBy(companyId);
+        List<CompanyUserInfo> companyUserInfos = companyUserMapper.toCompanyUserInfos(companyUsers);
+        // todo: for tsykli sees (companyUserInfos) arvutada valja iga useri kohta tema tundide staatus,
+        // tulemuseks saad kirjutada mida iganes (tulemuseks string)
+        return companyUserInfos;
     }
 }

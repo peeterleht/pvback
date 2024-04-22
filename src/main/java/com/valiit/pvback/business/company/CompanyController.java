@@ -18,7 +18,7 @@ public class CompanyController {
         return companyService.findUsersBySearchCriteria(email);
     }
 
-    @GetMapping("/company/get-all-company-users")
+    @GetMapping("/company/users")
     public List<CompanyUserInfo> findUsersByCompanyId(@RequestParam Integer companyId){
        return companyService.findUsersByCompanyId(companyId);
     }
