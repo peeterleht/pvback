@@ -1,5 +1,6 @@
 package com.valiit.pvback.business.project;
 
+import com.valiit.pvback.business.project.dto.ProjectInfo;
 import com.valiit.pvback.domain.project.Project;
 import com.valiit.pvback.domain.project.ProjectMapper;
 import com.valiit.pvback.domain.project.ProjectRepository;

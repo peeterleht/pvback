@@ -1,5 +1,6 @@
 package com.valiit.pvback.business.user;
 
+import com.valiit.pvback.business.user.dto.UserInfo;
 import com.valiit.pvback.domain.user.User;
 import com.valiit.pvback.domain.user.UserMapper;
 import com.valiit.pvback.domain.user.UserRepository;
@@ -16,9 +17,9 @@ public class UserService {
     private final UserMapper userMapper;
 
 
-    public List<UserInfo> getAllUsers() {
-        List<User> users =userRepository.findAll();
-        return userMapper.toUserInfos(users);
 
+    public List<UserInfo> findUsersByEmail(String email) {
+        // todo: to be implemented
+        return null;
     }
 }

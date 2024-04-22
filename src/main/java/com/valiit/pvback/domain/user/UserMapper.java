@@ -3,11 +3,12 @@ package com.valiit.pvback.domain.user;
 
 import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.login.dto.LoginResponse;
-import com.valiit.pvback.business.user.UserInfo;
-import com.valiit.pvback.business.user.UserInfoExtended;
-import org.mapstruct.*;
-
-import java.util.List;
+import com.valiit.pvback.business.user.dto.ExtendedUserRequest;
+import com.valiit.pvback.business.user.dto.UserRequest;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.ReportingPolicy;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UserMapper {
@@ -15,18 +16,11 @@ public interface UserMapper {
     @Mapping(source = "role.name", target = "roleName")
     LoginResponse toLoginResponse(User user);
 
-    @Mapping(source = "name",target = "userName")
-    @Mapping(source = "role.name",target = "roleName")
-    @Mapping(source = "email",target = "userEmail")
-    @Mapping(source = "status",target = "userStatus")
-    UserInfo toUserInfo(User user);
 
-    List<UserInfo> toUserInfos(List<User> users);
 
-    @Mapping(constant = Status.UNDEFINED,target = "role.name")
-    @Mapping(source = "userPassword",target = "password")
-    @Mapping(source = "userEmail",target = "email")
+    @Mapping(source = "password",target = "password")
+    @Mapping(source = "email",target = "email")
     @Mapping(source = "userName",target = "name")
     @Mapping(constant = Status.ACTIVE, target = "status")
-    User toUser(UserInfoExtended userInfoExtended);
+    User toUser(UserRequest extendedUserRequest);
 }
