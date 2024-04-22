@@ -1,4 +1,4 @@
-package com.valiit.pvback.business.company;
+package com.valiit.pvback.business.company.dto;
 
 import com.valiit.pvback.domain.user.User;
 import jakarta.validation.constraints.NotNull;
