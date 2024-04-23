@@ -31,5 +31,4 @@ public class System {
     @NotNull
     @Column(name = "image_data", nullable = false)
     private byte[] imageData;
-
 }

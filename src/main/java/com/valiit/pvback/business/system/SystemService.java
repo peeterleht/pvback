@@ -48,7 +48,7 @@ public class SystemService {
     }
     public void updateSystemData(SystemInfo systemInfo) {
         System systemData = systemRepository.findById(1).get();
-        systemData.setName(systemInfo.getSystemName());
+        systemMapper.updateSystemData(systemInfo, systemData);
         systemRepository.save(systemData);
     }
     public List<SysAdvertInfo> getSysAdvertInfo() {
