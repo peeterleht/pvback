@@ -1,6 +1,7 @@
 package com.valiit.pvback.domain.project;
 
 import com.valiit.pvback.business.Status;
+import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
 import com.valiit.pvback.business.project.dto.ProjectInfo;
 import org.mapstruct.*;
 
@@ -23,4 +24,15 @@ public interface ProjectMapper {
     ProjectInfo toProjectInfo(Project project);
 
     List<ProjectInfo> toProjectInfos(List<Project> projects);
+
+
+    @Mapping(source = "id", target = "projectId")
+    @Mapping(source = "code", target = "projectCode")
+    @Mapping(source = "name", target = "projectName")
+    @Mapping(source = "client", target = "clientName")
+    @Mapping(source = "bankLink", target = "bankLink")
+    ProjectGeneralInfo toProjectGeneralInfo(Project project);
+
+
+    List<ProjectGeneralInfo> toProjectGeneralInfos(List<Project> projects);
 }
