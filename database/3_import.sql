@@ -6,16 +6,16 @@ INSERT INTO manager."user" (id, role_id, email,password, name, status) VALUES (d
 INSERT INTO manager."user" (id, role_id, email,password, name, status) VALUES (default,2, 'joonas','123', 'joonask', 'A');
 INSERT INTO manager."user" (id, role_id, email,password, name, status) VALUES (default,3, 'peeter','123', 'peeterl', 'A');
 
-INSERT INTO manager.project_role(id, name) VALUES (default, 'projektijuht');
-INSERT INTO manager.project_role(id, name) VALUES (default, 'seenior');
+INSERT INTO manager.project_role(id, name) VALUES (default, 'Projektijuht');
+INSERT INTO manager.project_role(id, name) VALUES (default, 'Seenior');
 
 INSERT INTO manager.project(id, code, name, client, bank_link, status) VALUES (default,'A62','Oluline Tegevus','Oluline klinet','MINGIURL','A');
 
-INSERT INTO manager.subscription_type(id, tier, name) VALUES (default, 1, 'demo');
-INSERT INTO manager.subscription_type(id, tier, name) VALUES (default, 2, 'väike tiim');
-INSERT INTO manager.subscription_type(id, tier, name) VALUES (default, 3, 'piiranguteta');
+INSERT INTO manager.subscription_type(id, tier, name) VALUES (default, 1, 'Katseta');
+INSERT INTO manager.subscription_type(id, tier, name) VALUES (default, 2, 'Väike tiim');
+INSERT INTO manager.subscription_type(id, tier, name) VALUES (default, 3, 'Piiranguteta');
 
-INSERT INTO manager.company(id, subscription_type_id, name, logo) values (default, 1, 'ehitus', null);
+INSERT INTO manager.company(id, subscription_type_id, name, logo) values (default, 1, 'Ehitus', null);
 
 INSERT INTO manager.company_user(id, company_id, user_id, project_role_id, is_company_admin) VALUES (default,1,2,1, true);
 INSERT INTO manager.company_user(id, company_id, user_id, project_role_id, is_company_admin) VALUES (default,1,3,2, false);
@@ -31,9 +31,9 @@ INSERT INTO manager.sys_feedback(id, name, text) VALUES (default,'JOONAS','Olen 
 INSERT INTO manager.sys_feedback(id, name, text) VALUES (default,'SERGEI','Lõppude lõpuks päriselt näen projekti.');
 INSERT INTO manager.sys_feedback(id, name, text) VALUES (default,'RAIN','Mis värk on?');
 
-INSERT INTO manager.sys_payment_tier(id, subscription_type_id, name, text_row_1, text_row_2, text_row_3, text_row_4, text_row_5, text_row_6, text_row_7, text_row_8, price_month, price_year) VALUES (default,1,'Katseta','Üks projekt','Projekti töölaud','Ülesannete haldus','Projekti tiimi haldus','Projekti analüütika','','','',0,0);
-INSERT INTO manager.sys_payment_tier(id, subscription_type_id, name, text_row_1, text_row_2, text_row_3, text_row_4, text_row_5, text_row_6, text_row_7, text_row_8, price_month, price_year) VALUES (default,1,'Väike tiim','3 projekti korraga','Projektide üldvaade','Projekti töölaud','Ülesannete haldus','Kogu tiimi haldus','Projekti tiimi haldus','Projekti analüütika','Inimressurside analüütika',25,250);
-INSERT INTO manager.sys_payment_tier(id, subscription_type_id, name, text_row_1, text_row_2, text_row_3, text_row_4, text_row_5, text_row_6, text_row_7, text_row_8, price_month, price_year) VALUES (default,1,'Piirangudeta','Piiramatu projektide arv','Projektide üldvaade','Projekti töölaud','Ülesannete haldus','Kogu tiimi haldus','Projekti tiimi haldus','Projekti analüütika','Inimressurside analüütika',100,1000);
+INSERT INTO manager.sys_payment_tier(id, subscription_type_id, text_row_1, text_row_2, text_row_3, text_row_4, text_row_5, text_row_6, text_row_7, text_row_8, price_month, price_year) VALUES (default,1,'Üks projekt','Projekti töölaud','Ülesannete haldus','Projekti tiimi haldus','Projekti analüütika','','','',0,0);
+INSERT INTO manager.sys_payment_tier(id, subscription_type_id, text_row_1, text_row_2, text_row_3, text_row_4, text_row_5, text_row_6, text_row_7, text_row_8, price_month, price_year) VALUES (default,2,'3 projekti korraga','Projektide üldvaade','Projekti töölaud','Ülesannete haldus','Kogu tiimi haldus','Projekti tiimi haldus','Projekti analüütika','Inimressurside analüütika',25,250);
+INSERT INTO manager.sys_payment_tier(id, subscription_type_id, text_row_1, text_row_2, text_row_3, text_row_4, text_row_5, text_row_6, text_row_7, text_row_8, price_month, price_year) VALUES (default,3,'Piiramatu projektide arv','Projektide üldvaade','Projekti töölaud','Ülesannete haldus','Kogu tiimi haldus','Projekti tiimi haldus','Projekti analüütika','Inimressurside analüütika',100,1000);
 
 INSERT INTO manager.sys_project_example(id, project_id, name, text) VALUES (default,1,'Ehitus','Platvormi abil juhiti ehitusprotsesse');
 INSERT INTO manager.sys_project_example(id, project_id, name, text) VALUES (default,1,'Projekteerimine','Platvormi abil jagati projekteerimise ülesandeid');

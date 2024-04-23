@@ -164,7 +164,8 @@ CREATE TABLE sys_payment_tier
 (
     id                   serial    NOT NULL,
     subscription_type_id int       NOT NULL,
-    name                 char(255) NOT NULL,
+    price_month          int       NOT NULL,
+    price_year           int       NOT NULL,
     text_row_1           char(255) NOT NULL,
     text_row_2           char(255) NULL,
     text_row_3           char(255) NULL,
@@ -173,8 +174,6 @@ CREATE TABLE sys_payment_tier
     text_row_6           char(255) NULL,
     text_row_7           char(255) NULL,
     text_row_8           char(255) NULL,
-    price_month          int       NOT NULL,
-    price_year           int       NOT NULL,
     CONSTRAINT sys_payment_tier_pk PRIMARY KEY (id)
 );
 
