@@ -2,13 +2,20 @@ package com.valiit.pvback.domain.company.companyuser;
 
 import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.company.dto.CompanyUserInfo;
+import com.valiit.pvback.business.company.dto.CompanyUserRequest;
 import org.mapstruct.*;
 
 import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CompanyUserMapper {
-    CompanyUser toEntity(CompanyUserInfo companyUserInfo);
+
+    @Mapping(source = "companyId", target = "company.id")
+    @Mapping(source = "userId", target = "user.id")
+    @Mapping(source = "projectRoleId", target = "projectRole.id")
+    @Mapping(source = "isCompanyAdmin", target = "isCompanyAdmin")
+
+    CompanyUser toCompanyUser(CompanyUserRequest companyUserRequest);
 
     @Mapping(source = "user.id", target = "userId")
     @Mapping(source = "user.name", target = "userName")
