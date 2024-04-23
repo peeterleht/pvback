@@ -22,4 +22,7 @@ public interface SysPaymentTierMapper {
     SysPaymentTierInfo toSysPaymentTierInfo(SysPaymentTier sysPaymentTier);
 
     List<SysPaymentTierInfo> toSysPaymentTierInfos(List<SysPaymentTier> sysPaymentTiers);
+
+    @InheritInverseConfiguration
+    void updateSysPaymentTierInfo(SysPaymentTierInfo sysPaymentTierInfo, @MappingTarget SysPaymentTier sysPaymentTier);
 }

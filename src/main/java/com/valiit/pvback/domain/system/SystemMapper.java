@@ -1,6 +1,8 @@
 package com.valiit.pvback.domain.system;
 
+import com.valiit.pvback.business.system.dto.SysAdvertInfo;
 import com.valiit.pvback.business.system.dto.SystemInfo;
+import com.valiit.pvback.domain.system.advert.SysAdvert;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

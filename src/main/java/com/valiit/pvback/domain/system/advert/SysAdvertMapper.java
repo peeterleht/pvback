@@ -15,4 +15,7 @@ public interface SysAdvertMapper {
     SysAdvertInfo toSysAdvertInfo(SysAdvert sysAdvert);
 
     List<SysAdvertInfo> toSysAdvertInfos(List<SysAdvert> sysAdverts);
+
+    @InheritInverseConfiguration
+    void updateSysAdvertInfo(SysAdvertInfo sysAdvertInfo, @MappingTarget SysAdvert sysAdvert);
 }
