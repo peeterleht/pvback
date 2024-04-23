@@ -18,6 +18,11 @@ public class CompanyController {
     private CompanyService companyService;
 
     @GetMapping("/company/find-user-by-email")
+    @Operation(summary = "Kasutaja otsimine meili järgi (leiab kõik kasutajad, kelle meil sisaldab otsingu inputti)",
+            description = "Päringu tulemus: Tagastatakse kõikide sobivate kasutajate meil, nimi, userId")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "andmed OK"),
+    })
     public List<NewCompanyUserInfo> getUsersBySearchCriteria(@RequestParam String email) {
         return companyService.getUsersBySearchCriteria(email);
     }
@@ -33,6 +38,11 @@ public class CompanyController {
     }
 
     @PostMapping("/new/company/user/")
+    @Operation(summary = "Uue firma kasutaja lisamine",
+            description = "Kande tulemus: Kasutajale lisatakse firma ja projektiroll")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "andmed OK"),
+    })
     public void addUserToCompany(@RequestBody CompanyUserRequest request){
         companyService.addUserToCompany(request);
     }
