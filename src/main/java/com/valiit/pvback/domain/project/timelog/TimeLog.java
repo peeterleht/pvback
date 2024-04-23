@@ -30,8 +30,8 @@ public class TimeLog {
     private Project project;
 
     @NotNull
-    @Column(name = "minutues", nullable = false)
-    private Integer minutues;
+    @Column(name = "minutes", nullable = false)
+    private Integer minutes;
 
     @NotNull
     @Column(name = "\"timestamp\"", nullable = false)
