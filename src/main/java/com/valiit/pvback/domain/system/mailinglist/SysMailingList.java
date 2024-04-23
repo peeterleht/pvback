@@ -1,41 +1,27 @@
-package com.valiit.pvback.domain.user;
+package com.valiit.pvback.domain.system.mailinglist;
 
-import com.valiit.pvback.domain.user.role.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-
+import org.hibernate.annotations.ColumnDefault;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "\"user\"", schema = "manager")
-public class User {
+@Table(name = "sys_mailing_list")
+public class SysMailingList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ColumnDefault("nextval('manager.sys_mailing_list_id_seq'")
     @Column(name = "id", nullable = false)
     private Integer id;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "role_id", nullable = false)
-    private Role role;
-
-    @Size(max = 255)
-    @NotNull
-    @Column(name = "password", nullable = false)
-    private String password;
 
     @Size(max = 255)
     @NotNull
     @Column(name = "email", nullable = false)
     private String email;
-
-    @Size(max = 255)
-    @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
 
     @NotNull
     @Column(name = "status", nullable = false, length = Integer.MAX_VALUE)
