@@ -19,6 +19,7 @@ public class TimeLog {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
@@ -30,11 +31,27 @@ public class TimeLog {
     private Project project;
 
     @NotNull
-    @Column(name = "minutes", nullable = false)
-    private Integer minutes;
+    @Column(name = "monday", nullable = false)
+    private Integer monday;
 
     @NotNull
-    @Column(name = "\"timestamp\"", nullable = false)
-    private Instant timestamp;
+    @Column(name = "tuesday", nullable = false)
+    private Integer tuesday;
+
+    @NotNull
+    @Column(name = "wednesday", nullable = false)
+    private Integer wednesday;
+
+    @NotNull
+    @Column(name = "thursday", nullable = false)
+    private Integer thursday;
+
+    @NotNull
+    @Column(name = "friday", nullable = false)
+    private Integer friday;
+
+    @NotNull
+    @Column(name = "week_number", nullable = false)
+    private Integer weekNumber;
 
 }

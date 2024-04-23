@@ -1,8 +1,9 @@
 package com.valiit.pvback.business.project;
 
 
+import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
 import com.valiit.pvback.business.project.dto.ProjectInfo;
-import com.valiit.pvback.business.timelog.dto.TimeLogInfo;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,8 @@ public class ProjectController {
     }
 
     @GetMapping("/projects/companyuser/{userId}")
-    public void getAllCompanyUserProjects(@PathVariable Integer userId){
-        projectService.getAllCompanyUserProjects(userId);
+    @Operation(summary = "Toob ära kõik kasutaja projektid, milles ta osaleb")
+    public List<ProjectGeneralInfo> getAllCompanyUserProjects(@PathVariable Integer userId){
+        return projectService.getAllCompanyUserProjects(userId);
     }
 }

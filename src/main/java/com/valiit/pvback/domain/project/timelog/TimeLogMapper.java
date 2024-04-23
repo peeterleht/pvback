@@ -1,24 +1,28 @@
 package com.valiit.pvback.domain.project.timelog;
 
-import com.valiit.pvback.business.timelog.dto.TimeLogInfo;
+import com.valiit.pvback.business.timelog.dto.TimeLogRequest;
+import com.valiit.pvback.domain.project.projectuser.ProjectUser;
+import com.valiit.pvback.util.LocalDateConverter;
 import org.mapstruct.*;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, imports = {LocalDateConverter.class})
 public interface TimeLogMapper {
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "userId", target = "user.id")
-    @Mapping(source = "projectId", target = "project.id")
-    @Mapping(source = "minutes", target = "minutes")
-    @Mapping(source ="timestamp" ,target ="timestamp" )
-    TimeLog toTimeLogInfo(TimeLogInfo timeLogInfo);
-    default Instant map(Timestamp timestamp) {
-        return timestamp == null ? null : timestamp.toInstant();
-    }
-
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    TimeLog partialUpdate(TimeLogInfo timeLogInfo, @MappingTarget TimeLog timeLog);
+    TimeLog partialUpdate(TimeLogRequest timeLogRequest, @MappingTarget TimeLog timeLog);
+
+
+//    @Mapping(source = "", target = "user")
+//    @Mapping(source = "", target = "project")
+//
+
+
+
+    @Mapping(constant = "0", target = "monday")
+    @Mapping(constant = "0", target = "tuesday")
+    @Mapping(constant = "0", target = "wednesday")
+    @Mapping(constant = "0", target = "thursday")
+    @Mapping(constant = "0", target = "friday")
+    @Mapping(expression = "java(LocalDateConverter.getWeekNumberFromSystemDate())", target = "weekNumber")
+    TimeLog toTimeLog(ProjectUser projectUser);
 }

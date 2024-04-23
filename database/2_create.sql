@@ -111,11 +111,15 @@ CREATE TABLE subscription_type
 -- Table: time_log
 CREATE TABLE time_log
 (
-    id         serial    NOT NULL,
-    user_id    int       NOT NULL,
-    project_id int       NOT NULL,
-    minutes    int       NOT NULL,
-    timestamp  timestamp NOT NULL,
+    id          serial NOT NULL,
+    user_id     int    NOT NULL,
+    project_id  int    NOT NULL,
+    monday      int    NOT NULL,
+    tuesday     int    NOT NULL,
+    wednesday   int    NOT NULL,
+    thursday    int    NOT NULL,
+    friday      int    NOT NULL,
+    week_number int    NOT NULL,
     CONSTRAINT time_log_pk PRIMARY KEY (id)
 );
 
@@ -353,19 +357,21 @@ ALTER TABLE "user"
 ;
 
 -- Reference: payment_tier_subscription_type (table: sys_payment_tier)
-ALTER TABLE sys_payment_tier ADD CONSTRAINT payment_tier_subscription_type
-    FOREIGN KEY (subscription_type_id)
-        REFERENCES subscription_type (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
+ALTER TABLE sys_payment_tier
+    ADD CONSTRAINT payment_tier_subscription_type
+        FOREIGN KEY (subscription_type_id)
+            REFERENCES subscription_type (id)
+            NOT DEFERRABLE
+                INITIALLY IMMEDIATE
 ;
 
 -- Reference: project_example_project (table: sys_project_example)
-ALTER TABLE sys_project_example ADD CONSTRAINT project_example_project
-    FOREIGN KEY (project_id)
-        REFERENCES project (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
+ALTER TABLE sys_project_example
+    ADD CONSTRAINT project_example_project
+        FOREIGN KEY (project_id)
+            REFERENCES project (id)
+            NOT DEFERRABLE
+                INITIALLY IMMEDIATE
 ;
 
 
