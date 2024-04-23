@@ -1,6 +1,7 @@
 package com.valiit.pvback.business.company;
 
 import com.valiit.pvback.business.company.dto.CompanyUserInfo;
+import com.valiit.pvback.business.company.dto.CompanyUserRequest;
 import com.valiit.pvback.business.company.dto.UserAddToCompany;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,11 @@ public class CompanyController {
     @GetMapping("/company/users")
     public List<CompanyUserInfo> findUsersByCompanyId(@RequestParam Integer companyId){
        return companyService.findUsersByCompanyId(companyId);
+    }
+
+    @PostMapping("/new/company/user/")
+    public void addUserToCompany(@RequestBody CompanyUserRequest request){
+        companyService.addUserToCompany(request);
     }
 
 //    @PostMapping("/company-user")
