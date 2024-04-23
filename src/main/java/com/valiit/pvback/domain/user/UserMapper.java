@@ -2,9 +2,8 @@
 package com.valiit.pvback.domain.user;
 
 import com.valiit.pvback.business.Status;
-import com.valiit.pvback.business.company.UserAddToCompany;
+import com.valiit.pvback.business.company.dto.UserAddToCompany;
 import com.valiit.pvback.business.login.dto.LoginResponse;
-import com.valiit.pvback.business.user.dto.ExtendedUserRequest;
 import com.valiit.pvback.business.user.dto.UserRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,8 +1,9 @@
 package com.valiit.pvback.domain.process.processpart;
 
 import com.valiit.pvback.domain.process.Process;
-import com.valiit.pvback.domain.project.projectuser.ProjectUser;
 import com.valiit.pvback.domain.process.part.Part;
+import com.valiit.pvback.domain.project.projectrole.ProjectRole;
+import com.valiit.pvback.domain.project.projectuser.ProjectUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -13,8 +14,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "proccess_part", schema = "manager")
-public class ProccessPart {
+@Table(name = "process_part", schema = "manager")
+public class ProcessPart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -29,6 +30,11 @@ public class ProccessPart {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "process_id", nullable = false)
     private Process process;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "project_role_id", nullable = false)
+    private ProjectRole projectRole;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
