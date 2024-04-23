@@ -40,7 +40,8 @@ CREATE TABLE process_part
     id              serial  NOT NULL,
     part_id         int     NOT NULL,
     process_id      int     NOT NULL,
-    project_user_id int     NOT NULL,
+    project_role_id int     NOT NULL,
+    project_user_id int     NULL,
     deadline        date    NULL,
     status          char(1) NOT NULL,
     CONSTRAINT process_part_pk PRIMARY KEY (id)
@@ -101,8 +102,8 @@ CREATE TABLE role
 -- Table: subscription_type
 CREATE TABLE subscription_type
 (
-    id   serial NOT NULL,
-    tier int    NOT NULL,
+    id   serial       NOT NULL,
+    tier int          NOT NULL,
     name varchar(255) NOT NULL,
     CONSTRAINT subscription_type_pk PRIMARY KEY (id)
 );
@@ -258,6 +259,14 @@ ALTER TABLE process_part
     ADD CONSTRAINT process_part_process
         FOREIGN KEY (process_id)
             REFERENCES process (id)
+            NOT DEFERRABLE
+                INITIALLY IMMEDIATE
+;
+-- Reference: process_part_process (table: process_part)
+ALTER TABLE process_part
+    ADD CONSTRAINT process_part_project_role
+        FOREIGN KEY (project_role_id)
+            REFERENCES project_role (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;
