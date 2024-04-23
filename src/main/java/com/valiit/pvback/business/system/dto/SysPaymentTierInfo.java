@@ -1,6 +1,7 @@
 package com.valiit.pvback.business.system.dto;
 
 import com.valiit.pvback.domain.system.paymenttier.SysPaymentTier;
+import lombok.Data;
 import lombok.Value;
 
 import java.io.Serializable;
@@ -8,7 +9,7 @@ import java.io.Serializable;
 /**
  * DTO for {@link SysPaymentTier}
  */
-@Value
+@Data
 public class SysPaymentTierInfo implements Serializable {
     String sysPaymentTierSubscriptionTypeName;
     Integer sysPaymentTierPriceMonth;

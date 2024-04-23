@@ -4,8 +4,11 @@ import com.valiit.pvback.business.system.dto.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,6 +28,13 @@ public class SystemController {
     public SystemInfo findSystemData(){
         return systemService.getSystemInfo();
     }
+    @PutMapping("/system")
+    @Operation(summary = "Muudab põhiandmeid",
+            description = "Salvestab: app logo, nimi ja moto")
+    public void updateSystemData(@RequestBody @Valid SystemInfo systemInfo) {
+        systemService.updateSystemData(systemInfo);
+    }
+
     @GetMapping("/system/advert")
     @Operation(summary = "Reklaami osa päring",
             description = "Päringu tulemus: reklaami massiiv text, pilt, pool ja staatus")

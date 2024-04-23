@@ -9,4 +9,9 @@ public interface SystemMapper {
     @Mapping(source = "moto", target = "systemMoto")
     @Mapping(source = "imageData", target = "systemImageData")
     SystemInfo toSystemInfo(System system);
+
+    @Mapping(source = "systemName",target = "name")
+    @Mapping(source = "systemMoto",target = "moto")
+    //@Mapping(source = "systemImageData",target = "imageData")
+    void updateSystemData(SystemInfo systemInfo, @MappingTarget System systemData);
 }
