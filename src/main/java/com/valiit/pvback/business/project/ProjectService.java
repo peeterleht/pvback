@@ -27,4 +27,7 @@ public class ProjectService {
         return projectMapper.toProjectInfos(projects);
     }
 
+    public void getAllCompanyUserProjects(Integer userId) {
+        //todo: leida kõik companyUser projektid läbi tema userId, DB võib vajada täiendust.
+    }
 }
