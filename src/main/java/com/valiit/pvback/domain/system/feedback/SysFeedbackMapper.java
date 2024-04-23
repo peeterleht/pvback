@@ -14,6 +14,10 @@ public interface SysFeedbackMapper {
 
     List<SysFeedbackInfo> toSysFeedbackInfos(List<SysFeedback> sysFeedbacks);
 
-    @InheritInverseConfiguration
+    @Mapping(source = "sysFeedbackName",target = "name")
+    @Mapping(source = "sysFeedbackText",target = "text")
+    SysFeedback toSysFeedback(SysFeedbackInfo sysFeedbackInfo);
+
+    @InheritInverseConfiguration(name = "toSysFeedbackInfo")
     void updateSysFeedbackInfo(SysFeedbackInfo sysFeedbackInfo, @MappingTarget SysFeedback sysFeedback);
 }

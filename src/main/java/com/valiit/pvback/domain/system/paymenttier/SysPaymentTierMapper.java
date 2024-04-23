@@ -23,6 +23,18 @@ public interface SysPaymentTierMapper {
 
     List<SysPaymentTierInfo> toSysPaymentTierInfos(List<SysPaymentTier> sysPaymentTiers);
 
-    @InheritInverseConfiguration
+    @Mapping(source = "sysPaymentTierPriceMonth", target = "priceMonth")
+    @Mapping(source = "sysPaymentTierPriceYear", target = "priceYear")
+    @Mapping(source = "sysPaymentTierTextRow1", target = "textRow1")
+    @Mapping(source = "sysPaymentTierTextRow2", target = "textRow2")
+    @Mapping(source = "sysPaymentTierTextRow3", target = "textRow3")
+    @Mapping(source = "sysPaymentTierTextRow4", target = "textRow4")
+    @Mapping(source = "sysPaymentTierTextRow5", target = "textRow5")
+    @Mapping(source = "sysPaymentTierTextRow6", target = "textRow6")
+    @Mapping(source = "sysPaymentTierTextRow7", target = "textRow7")
+    @Mapping(source = "sysPaymentTierTextRow8", target = "textRow8")
+    SysPaymentTier toSysPaymentTier(SysPaymentTierInfo sysPaymentTierInfo);
+
+    @InheritInverseConfiguration(name = "toSysPaymentTierInfo")
     void updateSysPaymentTierInfo(SysPaymentTierInfo sysPaymentTierInfo, @MappingTarget SysPaymentTier sysPaymentTier);
 }

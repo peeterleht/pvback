@@ -16,10 +16,6 @@ public class SubscriptionType {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @NotNull
-    @Column(name = "tier", nullable = false)
-    private Integer tier;
-
     @Size(max = 255)
     @NotNull
     @Column(name = "name", nullable = false)

@@ -11,9 +11,9 @@ INSERT INTO manager.project_role(id, name) VALUES (default, 'Seenior');
 
 INSERT INTO manager.project(id, code, name, client, bank_link, status) VALUES (default,'A62','Oluline Tegevus','Oluline klinet','MINGIURL','A');
 
-INSERT INTO manager.subscription_type(id, tier, name) VALUES (default, 1, 'Katseta');
-INSERT INTO manager.subscription_type(id, tier, name) VALUES (default, 2, 'Väike tiim');
-INSERT INTO manager.subscription_type(id, tier, name) VALUES (default, 3, 'Piiranguteta');
+INSERT INTO manager.subscription_type(id, name) VALUES (default, 'Katseta');
+INSERT INTO manager.subscription_type(id, name) VALUES (default, 'Väike tiim');
+INSERT INTO manager.subscription_type(id, name) VALUES (default, 'Piiranguteta');
 
 INSERT INTO manager.company(id, subscription_type_id, name, logo) values (default, 1, 'Ehitus', null);
 

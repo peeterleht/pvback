@@ -103,7 +103,6 @@ CREATE TABLE role
 CREATE TABLE subscription_type
 (
     id   serial       NOT NULL,
-    tier int          NOT NULL,
     name varchar(255) NOT NULL,
     CONSTRAINT subscription_type_pk PRIMARY KEY (id)
 );

@@ -16,6 +16,12 @@ public interface SysAdvertMapper {
 
     List<SysAdvertInfo> toSysAdvertInfos(List<SysAdvert> sysAdverts);
 
-    @InheritInverseConfiguration
+    @Mapping(source = "sysAdvertText", target = "text")
+    @Mapping(source = "sysAdvertImageData", target = "imageData")
+    @Mapping(source = "sysAdvertSide", target = "side")
+    @Mapping(source = "sysAdvertStatus", target = "status")
+    SysAdvert toSysAdvert(SysAdvertInfo sysAdvertInfo);
+
+    @InheritInverseConfiguration(name = "toSysAdvertInfo")
     void updateSysAdvertInfo(SysAdvertInfo sysAdvertInfo, @MappingTarget SysAdvert sysAdvert);
 }

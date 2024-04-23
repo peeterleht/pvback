@@ -15,6 +15,11 @@ public interface SysProjectExampleMapper {
 
     List<SysProjectExampleInfo> toSysProjectExampleInfos(List<SysProjectExample> sysProjectExamples);
 
-    @InheritInverseConfiguration
+    @Mapping(source = "sysProjectExampleName", target = "name")
+    @Mapping(source = "sysProjectExampleText", target = "text")
+    @Mapping(source = "sysProjectExampleProjectId", target = "project.id")
+    SysProjectExample toSysProjectExample(SysProjectExampleInfo sysProjectExampleInfo);
+
+    @InheritInverseConfiguration(name = "toSysProjectExampleInfo")
     void updateSysProjectExampleInfo(SysProjectExampleInfo sysProjectExampleInfo, @MappingTarget SysProjectExample sysProjectExample);
 }
