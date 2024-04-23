@@ -63,7 +63,7 @@ public class SystemService {
         return sysProjectExampleMapper.toSysProjectExampleInfos(sysProjectExamples);
     }
     public SysTryOutInfo getSysTryOutInfo() {
-        SysTryOut sysTryOut = sysTryOutRepository.getReferenceById(1);
+        SysTryOut sysTryOut = sysTryOutRepository.findById(1).get();
         return sysTryOutMapper.toSysTryOutInfo(sysTryOut);
     }
 }
