@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 @Data
 public class SysFeedbackInfo implements Serializable {
+    Integer sysFeedbackId;
     String sysFeedbackName;
     String sysFeedbackText;
 }

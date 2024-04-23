@@ -11,6 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class SysProjectExampleInfo implements Serializable {
+    Integer sysProjectId;
     Integer sysProjectExampleProjectId;
     String sysProjectExampleName;
     String sysProjectExampleText;

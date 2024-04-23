@@ -11,6 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class SysAdvertInfo implements Serializable {
+    Integer sysAdvertId;
     String sysAdvertSide;
     String sysAdvertText;
     byte[] sysAdvertImageData;

@@ -11,6 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class SysPaymentTierInfo implements Serializable {
+    Integer sysPaymentTierId;
     String sysPaymentTierSubscriptionTypeName;
     Integer sysPaymentTierPriceMonth;
     Integer sysPaymentTierPriceYear;

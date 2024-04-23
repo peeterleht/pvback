@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface SysAdvertMapper {
+    @Mapping(source = "id", target = "sysAdvertId")
     @Mapping(source = "text", target = "sysAdvertText")
     @Mapping(source = "imageData", target = "sysAdvertImageData")
     @Mapping(source = "side", target = "sysAdvertSide")

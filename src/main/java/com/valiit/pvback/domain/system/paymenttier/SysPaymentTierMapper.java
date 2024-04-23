@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface SysPaymentTierMapper {
+    @Mapping(source = "id", target = "sysPaymentTierId")
     @Mapping(source = "subscriptionType.name", target = "sysPaymentTierSubscriptionTypeName")
     @Mapping(source = "priceMonth", target = "sysPaymentTierPriceMonth")
     @Mapping(source = "priceYear", target = "sysPaymentTierPriceYear")
