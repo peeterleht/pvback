@@ -40,9 +40,7 @@ INSERT INTO manager.sys_project_example(id, project_id, name, text) VALUES (defa
 INSERT INTO manager.sys_project_example(id, project_id, name, text) VALUES (default,1,'Tarkvara arendus','Platvormi abil ei juhitud äge panga loomine. Kuidas nii?');
 INSERT INTO manager.sys_project_example(id, project_id, name, text) VALUES (default,1,'Kooli projekt','Platvormi abil oli võimalik edukalt kooli projekti ära lõpetada');
 
-INSERT INTO manager.sys_try_out(id, header, text, button_text) VALUES (default,'Katseta rakendust oma järgmise projekti juhtimisel.','Projekti haldamine täiesti tasuta. Krediitkaardi andmeid ei küsita!','Proovi')
-
-
+INSERT INTO manager.sys_try_out(id, header, text, button_text) VALUES (default,'Katseta rakendust oma järgmise projekti juhtimisel.','Projekti haldamine täiesti tasuta. Krediitkaardi andmeid ei küsita!','Proovi');
 
 INSERT INTO manager.process (id, project_id, name, description, project_role_id, status) VALUES (default, 1, 'vundament', 'tee midagi', 1, 'A');
 INSERT INTO manager.process (id, project_id, name, description, project_role_id, status) VALUES (default, 1, 'seinad', 'tee midagi', 2, 'A');
@@ -52,8 +50,6 @@ INSERT INTO manager.process (id, project_id, name, description, project_role_id,
 INSERT INTO manager.part (id, name, volume, end_deadline, status) VALUES (default, 'maja 1', 3, '2024-04-22', 'A');
 INSERT INTO manager.part (id, name, volume, end_deadline, status) VALUES (default, 'maja 2', 56, '2024-04-11', 'A');
 
-
-
 INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 1, 1, 1, null, null, 'P');
 INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 1, 2, 2, null, null, 'P');
 INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 1, 3, 2, null, null, 'P');
@@ -62,7 +58,6 @@ INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, proj
 INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 2, 2, 2, null, null, 'P');
 INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 2, 3, 2, null, null, 'P');
 INSERT INTO manager.process_part (id, part_id, process_id, project_role_id, project_user_id, deadline, status) VALUES (default, 2, 4, 2, null, null, 'P');
-
 
 /*INSERT INTO manager.time_log(id, user_id, project_id, minutes, timestamp) VALUES (default,1,1,60,2024-07-20 12:15:15);*/
 
