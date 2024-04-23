@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface SysPaymentTierMapper {
+    @Mapping(source = "id", target = "sysPaymentTierId")
     @Mapping(source = "subscriptionType.name", target = "sysPaymentTierSubscriptionTypeName")
     @Mapping(source = "priceMonth", target = "sysPaymentTierPriceMonth")
     @Mapping(source = "priceYear", target = "sysPaymentTierPriceYear")
@@ -21,4 +22,19 @@ public interface SysPaymentTierMapper {
     SysPaymentTierInfo toSysPaymentTierInfo(SysPaymentTier sysPaymentTier);
 
     List<SysPaymentTierInfo> toSysPaymentTierInfos(List<SysPaymentTier> sysPaymentTiers);
+
+    @Mapping(source = "sysPaymentTierPriceMonth", target = "priceMonth")
+    @Mapping(source = "sysPaymentTierPriceYear", target = "priceYear")
+    @Mapping(source = "sysPaymentTierTextRow1", target = "textRow1")
+    @Mapping(source = "sysPaymentTierTextRow2", target = "textRow2")
+    @Mapping(source = "sysPaymentTierTextRow3", target = "textRow3")
+    @Mapping(source = "sysPaymentTierTextRow4", target = "textRow4")
+    @Mapping(source = "sysPaymentTierTextRow5", target = "textRow5")
+    @Mapping(source = "sysPaymentTierTextRow6", target = "textRow6")
+    @Mapping(source = "sysPaymentTierTextRow7", target = "textRow7")
+    @Mapping(source = "sysPaymentTierTextRow8", target = "textRow8")
+    SysPaymentTier toSysPaymentTier(SysPaymentTierInfo sysPaymentTierInfo);
+
+    @InheritInverseConfiguration(name = "toSysPaymentTierInfo")
+    void updateSysPaymentTierInfo(SysPaymentTierInfo sysPaymentTierInfo, @MappingTarget SysPaymentTier sysPaymentTier);
 }

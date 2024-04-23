@@ -9,4 +9,7 @@ public interface SysTryOutMapper {
     @Mapping(source = "text", target = "sysTryOutText")
     @Mapping(source = "buttonText", target = "sysTryOutButtonText")
     SysTryOutInfo toSysTryOutInfo(SysTryOut sysTryOut);
+
+    @InheritInverseConfiguration
+    void updateSysTryOutInfo(SysTryOutInfo sysTryOutInfo, @MappingTarget SysTryOut sysTryOut);
 }
