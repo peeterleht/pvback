@@ -1,10 +1,7 @@
 package com.valiit.pvback.business.system;
 
 import com.valiit.pvback.business.system.dto.*;
-import com.valiit.pvback.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
