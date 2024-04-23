@@ -1,14 +1,10 @@
 package com.valiit.pvback.business.company.dto;
 
-import com.valiit.pvback.domain.user.User;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * DTO for {@link com.valiit.pvback.domain.user.User}
@@ -16,11 +12,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserAddToCompany implements Serializable {
-    private Integer roleId;
-    private String roleName;
-    private String password;
+public class NewCompanyUserInfo implements Serializable {
+    private Integer userId;
     private String email;
     private String name;
-    private String status;
 }

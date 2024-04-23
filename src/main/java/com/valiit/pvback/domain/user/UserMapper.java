@@ -2,7 +2,7 @@
 package com.valiit.pvback.domain.user;
 
 import com.valiit.pvback.business.Status;
-import com.valiit.pvback.business.company.dto.UserAddToCompany;
+import com.valiit.pvback.business.company.dto.NewCompanyUserInfo;
 import com.valiit.pvback.business.login.dto.LoginResponse;
 import com.valiit.pvback.business.user.dto.UserRequest;
 import org.mapstruct.Mapper;
@@ -26,14 +26,12 @@ public interface UserMapper {
     @Mapping(constant = Status.ACTIVE, target = "status")
     User toUser(UserRequest extendedUserRequest);
 
-    @Mapping(source = "roleName", target = "role.name")
-    @Mapping(source = "roleId", target = "role.id")
+
+
+    @Mapping(source = "id", target = "userId")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "email", target = "email")
-    @Mapping(source = "roleName", target = "role")
-    @Mapping(source = "password", target = "password")
-    @Mapping(source = "status", target = "status")
-    User toUserGoCompany(UserAddToCompany userAddToCompany);
+    NewCompanyUserInfo toNewCompanyUserInfo(User user);
 
-    List<UserAddToCompany> toUserAddToCompany(List<User> users);
+    List<NewCompanyUserInfo> toNewCompanyUserInfos(List<User> users);
 }
