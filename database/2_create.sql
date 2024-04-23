@@ -131,6 +131,83 @@ CREATE TABLE "user"
     CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
+CREATE TABLE sys_advert
+(
+    id         serial    NOT NULL,
+    side       char(1)   NOT NULL,
+    text       char(255) NOT NULL,
+    image_data bytea     NOT NULL,
+    status     char(1)   NOT NULL,
+    CONSTRAINT sys_advert_pk PRIMARY KEY (id)
+);
+
+-- Table: sys_feedback
+CREATE TABLE sys_feedback
+(
+    id   serial    NOT NULL,
+    name char(255) NOT NULL,
+    text char(255) NOT NULL,
+    CONSTRAINT sys_feedback_pk PRIMARY KEY (id)
+);
+
+-- Table: sys_mailing_list
+CREATE TABLE sys_mailing_list
+(
+    id     serial    NOT NULL,
+    email  char(255) NOT NULL,
+    status char(1)   NOT NULL,
+    CONSTRAINT sys_mailing_list_pk PRIMARY KEY (id)
+);
+
+-- Table: sys_payment_tier
+CREATE TABLE sys_payment_tier
+(
+    id                   serial    NOT NULL,
+    subscription_type_id int       NOT NULL,
+    name                 char(255) NOT NULL,
+    text_row_1           char(255) NOT NULL,
+    text_row_2           char(255) NULL,
+    text_row_3           char(255) NULL,
+    text_row_4           char(255) NULL,
+    text_row_5           char(255) NULL,
+    text_row_6           char(255) NULL,
+    text_row_7           char(255) NULL,
+    text_row_8           char(255) NULL,
+    price_month          int       NOT NULL,
+    price_year           int       NOT NULL,
+    CONSTRAINT sys_payment_tier_pk PRIMARY KEY (id)
+);
+
+-- Table: sys_project_example
+CREATE TABLE sys_project_example
+(
+    id         serial    NOT NULL,
+    project_id int       NOT NULL,
+    name       char(30)  NOT NULL,
+    text       char(255) NOT NULL,
+    CONSTRAINT sys_project_example_pk PRIMARY KEY (id)
+);
+
+-- Table: sys_try_out
+CREATE TABLE sys_try_out
+(
+    id          serial    NOT NULL,
+    header      char(255) NOT NULL,
+    text        char(255) NULL,
+    button_text char(255) NOT NULL,
+    CONSTRAINT sys_try_out_pk PRIMARY KEY (id)
+);
+
+-- Table: system
+CREATE TABLE system
+(
+    id         serial    NOT NULL,
+    name       char(30)  NOT NULL,
+    moto       char(255) NOT NULL,
+    image_data bytea     NOT NULL,
+    CONSTRAINT system_pk PRIMARY KEY (id)
+);
+
 -- foreign keys
 -- Reference: company_subscription_type (table: company)
 ALTER TABLE company
@@ -266,6 +343,23 @@ ALTER TABLE "user"
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;
+
+-- Reference: payment_tier_subscription_type (table: sys_payment_tier)
+ALTER TABLE sys_payment_tier ADD CONSTRAINT payment_tier_subscription_type
+    FOREIGN KEY (subscription_type_id)
+        REFERENCES subscription_type (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: project_example_project (table: sys_project_example)
+ALTER TABLE sys_project_example ADD CONSTRAINT project_example_project
+    FOREIGN KEY (project_id)
+        REFERENCES project (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
 
 -- End of file.
 
