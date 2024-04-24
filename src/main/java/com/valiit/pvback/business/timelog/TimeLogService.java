@@ -34,7 +34,6 @@ public class TimeLogService {
     public TimeLogResponse getTimeLog(Integer timeLogId) {
         TimeLog timeLog = timeLogRepository.getReferenceById(timeLogId);
         return timeLogMapper.toTimeLogResponse(timeLog);
-
     }
 
     public List<TimeLogResponse> getAllTimeLogs(Integer userId) {

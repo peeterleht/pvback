@@ -47,4 +47,9 @@ public class ProjectController {
     public List<ProjectGeneralInfo> getAllCompanyUserProjects(@PathVariable Integer userId){
         return projectService.getAllCompanyUserProjects(userId);
     }
+
+    @GetMapping("/projectRoles")
+    public void getAllProjectRoles() {
+        projectService.getAllProjectRoles();
+    }
 }

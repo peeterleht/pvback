@@ -12,7 +12,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select u from User u where upper(u.email) = upper(:email) and u.password = :password and upper(u.status) = upper(:status)")
     Optional<User> findUserBy(@Param("email") String email, @Param("password") String password, @Param("status") String status);
 
-    @Query("select u from User u where upper(u.email) like upper(concat('%', ?1, '%'))")
-    List<User> findUsersByContains(String email);
+    @Query("select u from User u where u.status = :status and (upper(u.email) like upper(concat('%', :userInput, '%')) or upper(u.name) like upper(concat('%', :userInput, '%')))")
+    List<User> findUsersByContains(String status, String userInput);
 
 }

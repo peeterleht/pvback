@@ -35,6 +35,4 @@ public class TimeLogController {
     public List<TimeLogResponse> getAllTimeLogs(@RequestParam Integer userId){
         return timeLogService.getAllTimeLogs(userId);
     }
-
-
 }

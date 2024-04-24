@@ -1,5 +1,6 @@
 package com.valiit.pvback.business.company;
 
+import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.company.dto.CompanyUserInfo;
 import com.valiit.pvback.business.company.dto.CompanyUserRequest;
 import com.valiit.pvback.business.company.dto.NewCompanyUserInfo;
@@ -12,6 +13,7 @@ import com.valiit.pvback.domain.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,9 +26,24 @@ public class CompanyService {
     private final CompanyUserRepository companyUserRepository;
     private final CompanyUserMapper companyUserMapper;
 
-    public List<NewCompanyUserInfo> getUsersBySearchCriteria(String email) {
-        List<User> users = userRepository.findUsersByContains(email);
-        return userMapper.toNewCompanyUserInfos(users);
+    public List<NewCompanyUserInfo> getUsersBySearchCriteria(String userInput) {
+        List<User> users = userRepository.findUsersByContains(Status.ACTIVE, userInput);
+        List<NewCompanyUserInfo> newCompanyUserInfos = userMapper.toNewCompanyUserInfos(users);
+        return getAvailableUsers(newCompanyUserInfos);
+    }
+
+    private List<NewCompanyUserInfo> getAvailableUsers(List<NewCompanyUserInfo> newCompanyUserInfos) {
+        List<NewCompanyUserInfo> availableUsers = new ArrayList<>();
+        for (NewCompanyUserInfo newCompanyUserInfo : newCompanyUserInfos) {
+            if (userAvailable(newCompanyUserInfo)) {
+                availableUsers.add(newCompanyUserInfo);
+            }
+        }
+        return availableUsers;
+    }
+
+    private boolean userAvailable(NewCompanyUserInfo newCompanyUserInfo) {
+        return !companyUserRepository.userExistsBy(newCompanyUserInfo.getUserId());
     }
 
     public List<CompanyUserInfo> findUsersByCompanyId(Integer companyId) {

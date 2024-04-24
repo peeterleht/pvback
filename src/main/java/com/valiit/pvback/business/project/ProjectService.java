@@ -7,6 +7,8 @@ import com.valiit.pvback.business.project.dto.ProjectUserInfo;
 import com.valiit.pvback.domain.project.Project;
 import com.valiit.pvback.domain.project.ProjectMapper;
 import com.valiit.pvback.domain.project.ProjectRepository;
+import com.valiit.pvback.domain.project.projectrole.ProjectRole;
+import com.valiit.pvback.domain.project.projectrole.ProjectRoleRepository;
 import com.valiit.pvback.domain.project.projectuser.ProjectUser;
 import com.valiit.pvback.domain.project.projectuser.ProjectUserMapper;
 import com.valiit.pvback.domain.project.projectuser.ProjectUserRepository;
@@ -24,6 +26,7 @@ public class ProjectService {
     private final ProjectMapper projectMapper;
     private final ProjectUserMapper projectUserMapper;
     private final ProjectUserRepository projectUserRepository;
+    private final ProjectRoleRepository projectRoleRepository;
 
     public void createAndSaveProject(ProjectInfo projectInfo) {
         Project project = projectMapper.toProject(projectInfo);
@@ -52,5 +55,10 @@ public class ProjectService {
             List<ProjectUserInfo> projectUserInfos = projectUserMapper.toProjectUserInfos(projectUsers);
             projectGeneralInfo.setProjectUserInfos(projectUserInfos);
         }
+    }
+
+    public void getAllProjectRoles() {
+        List<ProjectRole> projectRoles = projectRoleRepository.findAll();
+        return ;
     }
 }
