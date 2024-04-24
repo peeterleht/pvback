@@ -2,10 +2,13 @@ package com.valiit.pvback.business.timelog;
 
 
 import com.valiit.pvback.business.timelog.dto.TimeLogRequest;
+import com.valiit.pvback.business.timelog.dto.TimeLogResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -22,6 +25,15 @@ public class TimeLogController {
     @Operation(summary = "kasutajale uue timelogi kande loomi")
     public void addTimeLog(@RequestParam Integer userId, Integer projectId) {
         timeLogService.addTimeLog(userId, projectId);
+    }
+
+    @GetMapping("/timelog")
+    public TimeLogResponse getTimelog(@RequestParam Integer timeLogId) {
+        return timeLogService.getTimeLog(timeLogId);
+    }
+    @GetMapping("/timelogs")
+    public List<TimeLogResponse> getAllTimeLogs(@RequestParam Integer userId){
+        return timeLogService.getAllTimeLogs(userId);
     }
 
 
