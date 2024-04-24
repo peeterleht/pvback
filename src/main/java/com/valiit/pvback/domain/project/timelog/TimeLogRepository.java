@@ -9,6 +9,6 @@ import java.util.List;
 public interface TimeLogRepository extends JpaRepository<TimeLog, Integer> {
 
 
-    @Query("select t from TimeLog t where t.user.id = :id")
+    @Query("select t from TimeLog t where t.user.id = :id order by t.project.id")
     List<TimeLog> findTimeLogsBy(@Param("id") Integer id);
 }

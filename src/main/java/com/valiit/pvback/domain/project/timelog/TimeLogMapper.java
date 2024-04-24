@@ -29,8 +29,12 @@ public interface TimeLogMapper {
     @Mapping(expression = "java(LocalDateConverter.getWeekNumberFromSystemDate())", target = "weekNumber")
     TimeLog toTimeLog(ProjectUser projectUser);
 
+
+    @Mapping(source = "id", target = "timeLogId")
     @Mapping(source = "user.id", target = "userId")
     @Mapping(source = "project.id", target = "projectId")
+    @Mapping(source = "project.code", target = "projectCode")
+    @Mapping(source = "project.name", target = "projectName")
     @Mapping(source = "monday", target = "monday")
     @Mapping(source = "tuesday", target = "tuesday")
     @Mapping(source = "wednesday", target = "wednesday")
