@@ -1,13 +1,11 @@
 package com.valiit.pvback.business.project;
 
 import com.valiit.pvback.business.Status;
-import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
-import com.valiit.pvback.business.project.dto.ProjectInfo;
-import com.valiit.pvback.business.project.dto.ProjectUserInfo;
+import com.valiit.pvback.business.project.dto.*;
 import com.valiit.pvback.domain.process.*;
-import com.valiit.pvback.business.project.dto.ProjectUserInfoExtended;
 import com.valiit.pvback.domain.process.Process;
-import com.valiit.pvback.domain.process.ProcessRepository;
+import com.valiit.pvback.domain.process.part.PartRepository;
+import com.valiit.pvback.domain.process.processpart.ProcessPartRepository;
 import com.valiit.pvback.domain.project.Project;
 import com.valiit.pvback.domain.project.ProjectMapper;
 import com.valiit.pvback.domain.project.ProjectRepository;
@@ -18,6 +16,7 @@ import com.valiit.pvback.domain.project.projectuser.ProjectUserMapper;
 import com.valiit.pvback.domain.project.projectuser.ProjectUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -33,6 +32,8 @@ public class ProjectService {
     private final ProjectUserRepository projectUserRepository;
     private final ProcessRepository processRepository;
     private final ProjectRoleRepository projectRoleRepository;
+    private final ProcessPartRepository processPartRepository;
+    private final PartRepository partRepository;
 
     public void createAndSaveProject(ProjectInfo projectInfo) {
         Project project = projectMapper.toProject(projectInfo);
@@ -63,12 +64,15 @@ public class ProjectService {
         }
     }
 
-    public List<ProjectUserInfoExtended> getCompanyUsersInProject(Integer projectId) {
+    public List<ProjectUserInfoExtended> getProjectUsers(Integer projectId) {
         List<ProjectUser> projectUsers = projectUserRepository.findProjectUsersBy(projectId);
         return projectUserMapper.toExtendedProjectUserInfos(projectUsers);
     }
 
-
+    public void addProjectUser(@RequestBody AddProjectUserRequest request) {
+        ProjectUser projectUser = projectUserMapper.toProjectUser(request);
+        projectUserRepository.save(projectUser);
+    }
 
 
     public void getAllProjectRoles() {
@@ -81,4 +85,8 @@ public class ProjectService {
         return processMapper.toProcessInfos(projectProcesses);
 
     }
+
+
+
+
 }

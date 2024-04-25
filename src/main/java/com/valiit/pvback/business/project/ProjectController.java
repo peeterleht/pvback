@@ -1,6 +1,7 @@
 package com.valiit.pvback.business.project;
 
 
+import com.valiit.pvback.business.project.dto.AddProjectUserRequest;
 import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
 import com.valiit.pvback.business.project.dto.ProjectInfo;
 import com.valiit.pvback.business.project.dto.ProjectUserInfoExtended;
@@ -54,7 +55,7 @@ public class ProjectController {
     description = "Kande tulemus: leitakse andmevaasist kõik kasutajad, kes on seotud valitud projektiga")
 
     public List<ProjectUserInfoExtended> getCompanyUsersInProject(@PathVariable Integer projectId) {
-        return projectService.getCompanyUsersInProject(projectId);
+        return projectService.getProjectUsers(projectId);
 
     }
 
@@ -69,4 +70,15 @@ public class ProjectController {
 
     }
 
+//    @GetMapping("/project/process-part/{projectUserId}")
+//    public void getAllProjectUserProcessParts(Integer projectUserId) {
+//        projectService.getAllProjectProcessParts(projectUserId);
+//    }
+
+
+
+    @PostMapping("/project/user")
+    public void addProjectUser(@RequestBody AddProjectUserRequest request) {
+        projectService.addProjectUser(request);
+    }
 }
