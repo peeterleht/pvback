@@ -4,6 +4,8 @@ import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
 import com.valiit.pvback.business.project.dto.ProjectInfo;
 import com.valiit.pvback.business.project.dto.ProjectUserInfo;
+import com.valiit.pvback.domain.process.Process;
+import com.valiit.pvback.domain.process.ProcessRepository;
 import com.valiit.pvback.business.project.dto.ProjectUserInfoExtended;
 import com.valiit.pvback.domain.process.ProcessRepository;
 import com.valiit.pvback.domain.project.Project;
@@ -71,5 +73,10 @@ public class ProjectService {
     public void getAllProjectRoles() {
         List<ProjectRole> projectRoles = projectRoleRepository.findAll();
         return ;
+    }
+
+    public void getAllProjectProcesses(Integer projectId) {
+        List<Process> projectProcesses = processRepository.findAllProcessesBy(projectId);
+
     }
 }

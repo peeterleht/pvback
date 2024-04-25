@@ -61,4 +61,10 @@ public class ProjectController {
     public void getAllProjectRoles() {
         projectService.getAllProjectRoles();
     }
+
+    @GetMapping("/project/process/{projectId}")
+    public void getAllProjectProcesses(Integer projectId) {
+        projectService.getAllProjectProcesses(projectId);
+    }
+
 }
