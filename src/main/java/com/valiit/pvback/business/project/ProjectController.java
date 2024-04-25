@@ -3,6 +3,7 @@ package com.valiit.pvback.business.project;
 
 import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
 import com.valiit.pvback.business.project.dto.ProjectInfo;
+import com.valiit.pvback.business.project.dto.ProjectUserInfoExtended;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -46,5 +47,13 @@ public class ProjectController {
     })
     public List<ProjectGeneralInfo> getAllCompanyUserProjects(@PathVariable Integer userId){
         return projectService.getAllCompanyUserProjects(userId);
+    }
+    @GetMapping("/projects/companyusers/{projectId}")
+    @Operation(summary = "Toob ära kõik kasutajad, kes osalevad valitud projektis",
+    description = "Kande tulemus: leitakse andmevaasist kõik kasutajad, kes on seotud valitud projektiga")
+
+    public List<ProjectUserInfoExtended> getCompanyUsersInProject(@PathVariable Integer projectId) {
+        return projectService.getCompanyUsersInProject(projectId);
+
     }
 }
