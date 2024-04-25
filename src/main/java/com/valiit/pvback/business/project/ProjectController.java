@@ -4,6 +4,7 @@ package com.valiit.pvback.business.project;
 import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
 import com.valiit.pvback.business.project.dto.ProjectInfo;
 import com.valiit.pvback.business.project.dto.ProjectUserInfoExtended;
+import com.valiit.pvback.domain.process.ProcessInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -63,8 +64,9 @@ public class ProjectController {
     }
 
     @GetMapping("/project/process/{projectId}")
-    public void getAllProjectProcesses(Integer projectId) {
-        projectService.getAllProjectProcesses(projectId);
+    public List<ProcessInfo> getAllProjectProcesses(Integer projectId) {
+        return projectService.getAllProjectProcesses(projectId);
+
     }
 
 }

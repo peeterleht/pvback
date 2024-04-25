@@ -4,9 +4,9 @@ import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
 import com.valiit.pvback.business.project.dto.ProjectInfo;
 import com.valiit.pvback.business.project.dto.ProjectUserInfo;
-import com.valiit.pvback.domain.process.Process;
-import com.valiit.pvback.domain.process.ProcessRepository;
+import com.valiit.pvback.domain.process.*;
 import com.valiit.pvback.business.project.dto.ProjectUserInfoExtended;
+import com.valiit.pvback.domain.process.Process;
 import com.valiit.pvback.domain.process.ProcessRepository;
 import com.valiit.pvback.domain.project.Project;
 import com.valiit.pvback.domain.project.ProjectMapper;
@@ -29,6 +29,7 @@ public class ProjectService {
 
     private final ProjectMapper projectMapper;
     private final ProjectUserMapper projectUserMapper;
+    private final ProcessMapper processMapper;
     private final ProjectUserRepository projectUserRepository;
     private final ProcessRepository processRepository;
     private final ProjectRoleRepository projectRoleRepository;
@@ -75,8 +76,9 @@ public class ProjectService {
         return ;
     }
 
-    public void getAllProjectProcesses(Integer projectId) {
+    public List<ProcessInfo> getAllProjectProcesses(Integer projectId) {
         List<Process> projectProcesses = processRepository.findAllProcessesBy(projectId);
+        return processMapper.toProcessInfos(projectProcesses);
 
     }
 }
