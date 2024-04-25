@@ -17,14 +17,14 @@ public class CompanyController {
 
     private CompanyService companyService;
 
-    @GetMapping("/company/find-user-by-email")
+    @GetMapping("/company/users/search")
     @Operation(summary = "Kasutaja otsimine meili järgi (leiab kõik kasutajad, kelle meil sisaldab otsingu inputti)",
             description = "Päringu tulemus: Tagastatakse kõikide sobivate kasutajate meil, nimi, userId")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "andmed OK"),
     })
-    public List<NewCompanyUserInfo> getUsersBySearchCriteria(@RequestParam String email) {
-        return companyService.getUsersBySearchCriteria(email);
+    public List<NewCompanyUserInfo> getUsersBySearchCriteria(@RequestParam String userInput) {
+        return companyService.getUsersBySearchCriteria(userInput);
     }
 
     @GetMapping("/company/users")
