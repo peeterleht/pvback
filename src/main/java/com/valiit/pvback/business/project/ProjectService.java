@@ -62,7 +62,6 @@ public class ProjectService {
         return projectUserMapper.toExtendedProjectUserInfos(projectUsers);
     }
 
-    public void getProcessesInProject(Integer projectId) {
-        processRepository.find
-    }
+
+
 }
