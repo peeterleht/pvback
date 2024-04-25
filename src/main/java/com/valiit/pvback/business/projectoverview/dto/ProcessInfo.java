@@ -1,11 +1,14 @@
-package com.valiit.pvback.domain.process;
+package com.valiit.pvback.business.projectoverview.dto;
 
+import com.valiit.pvback.business.projectoverview.dto.PartInfo;
+import com.valiit.pvback.domain.process.Process;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * DTO for {@link Process}
@@ -14,12 +17,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProcessInfo implements Serializable {
-    private Integer id;
-    @Size(max = 255)
-    private String name;
-    @Size(max = 255)
-    private String description;
-    private Integer projectRoleId;
-    private String projectRoleName;
-    private String status;
+    private Integer processId;
+    private String processName;
+
 }

@@ -1,5 +1,6 @@
 package com.valiit.pvback.domain.process;
 
+import com.valiit.pvback.business.projectoverview.dto.ProcessInfo;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -7,11 +8,8 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProcessMapper {
 
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "description", target = "description")
-    @Mapping(source = "projectRole.id", target = "projectRoleId")
-    @Mapping(source = "projectRole.name", target = "projectRoleName")
-    @Mapping(source = "status", target = "status")
+    @Mapping(source = "id", target = "processId")
+    @Mapping(source = "name", target = "processName")
     ProcessInfo toProcessInfo(Process process);
 
     List<ProcessInfo> toProcessInfos(List<Process> processes);
