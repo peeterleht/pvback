@@ -5,7 +5,8 @@ import com.valiit.pvback.business.project.dto.AddProjectUserRequest;
 import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
 import com.valiit.pvback.business.project.dto.ProjectInfo;
 import com.valiit.pvback.business.project.dto.ProjectUserInfoExtended;
-import com.valiit.pvback.domain.process.ProcessInfo;
+import com.valiit.pvback.business.projectoverview.dto.ProcessInfo;
+import com.valiit.pvback.domain.project.projectrole.ProjectRole;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -59,22 +60,10 @@ public class ProjectController {
 
     }
 
-    @GetMapping("/projectRoles")
-    public void getAllProjectRoles() {
-        projectService.getAllProjectRoles();
+    @GetMapping("/project-roles")
+    public List<ProjectRole> getAllProjectRoles() {
+        return projectService.getAllProjectRoles();
     }
-
-    @GetMapping("/project/process/{projectId}")
-    public List<ProcessInfo> getAllProjectProcesses(Integer projectId) {
-        return projectService.getAllProjectProcesses(projectId);
-
-    }
-
-//    @GetMapping("/project/process-part/{projectUserId}")
-//    public void getAllProjectUserProcessParts(Integer projectUserId) {
-//        projectService.getAllProjectProcessParts(projectUserId);
-//    }
-
 
 
     @PostMapping("/project/user")
