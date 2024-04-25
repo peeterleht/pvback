@@ -19,4 +19,5 @@ public class ProjectUserInfoExtended extends ProjectUserInfo {
     private Integer id;
     private Integer projectRoleId;
     private String projectRoleName;
+
 }

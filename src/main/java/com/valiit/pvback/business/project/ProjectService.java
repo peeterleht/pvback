@@ -63,7 +63,7 @@ public class ProjectService {
         }
     }
 
-    public List<ProjectUserInfoExtended> getCompanyUsersInProject(Integer projectId) {
+    public List<ProjectUserInfoExtended> getProjectUsers(Integer projectId) {
         List<ProjectUser> projectUsers = projectUserRepository.findProjectUsersBy(projectId);
         return projectUserMapper.toExtendedProjectUserInfos(projectUsers);
     }

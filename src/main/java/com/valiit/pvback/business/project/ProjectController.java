@@ -53,8 +53,8 @@ public class ProjectController {
     @Operation(summary = "Toob ära kõik kasutajad, kes osalevad valitud projektis",
     description = "Kande tulemus: leitakse andmevaasist kõik kasutajad, kes on seotud valitud projektiga")
 
-    public List<ProjectUserInfoExtended> getCompanyUsersInProject(@PathVariable Integer projectId) {
-        return projectService.getCompanyUsersInProject(projectId);
+    public List<ProjectUserInfoExtended> getProjectUsers(@PathVariable Integer projectId) {
+        return projectService.getProjectUsers(projectId);
 
     }
 
@@ -68,5 +68,4 @@ public class ProjectController {
         return projectService.getAllProjectProcesses(projectId);
 
     }
-
 }
