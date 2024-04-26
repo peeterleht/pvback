@@ -47,11 +47,5 @@ public class ProjectOverviewService {
         }
 
         return projectOverviewInfos;
-
-
-
-
-        // todo: FINITO, JEEEEEE!!!!!!!
-
     }
 }
