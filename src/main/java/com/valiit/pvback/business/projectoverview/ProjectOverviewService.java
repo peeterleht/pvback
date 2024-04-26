@@ -43,9 +43,8 @@ public class ProjectOverviewService {
         List<PartInfo> partInfos = partMapper.toPartInfos(parts);
         projectOverviewInfos.setPartInfos(partInfos);
 
-        for (Part part : parts) {
-            PartInfo partInfo = projectOverviewInfos.getPartInfos().get(part.getId());
-            List<ProcessPart> processParts = processPartRepository.findProcessPartsBy(part.getId());
+        for (PartInfo partInfo : partInfos) {
+            List<ProcessPart> processParts = processPartRepository.findProcessPartsBy(partInfo.getPartId());
             List<ProcessPartInfo> processPartInfos = processPartMapper.toProcessPartInfos(processParts);
             partInfo.setProcessPartInfos(processPartInfos);
         }
@@ -55,7 +54,6 @@ public class ProjectOverviewService {
         // todo: partMapperi abil luua List<PartInfo> partInfos ja panna projectOverview külge
 
 
-        // todo: for tsükkel partInfos listist
         // todo: for tsükkel partInfos listist
         // todo: igal tsüklil partInfo.getPartId() ja processPartRepository.findProcessPartsBy(partId); abil,
         //  leiame List<ProcessPart> 'processParts' listi
