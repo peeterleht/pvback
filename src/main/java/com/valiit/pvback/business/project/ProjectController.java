@@ -1,8 +1,12 @@
 package com.valiit.pvback.business.project;
 
 
+import com.valiit.pvback.business.project.dto.AddProjectUserRequest;
 import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
 import com.valiit.pvback.business.project.dto.ProjectInfo;
+import com.valiit.pvback.business.project.dto.ProjectUserInfoExtended;
+import com.valiit.pvback.business.projectoverview.dto.ProcessInfo;
+import com.valiit.pvback.domain.project.projectrole.ProjectRole;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -47,9 +51,23 @@ public class ProjectController {
     public List<ProjectGeneralInfo> getAllCompanyUserProjects(@PathVariable Integer userId){
         return projectService.getAllCompanyUserProjects(userId);
     }
+    @GetMapping("/projects/companyusers/{projectId}")
+    @Operation(summary = "Toob ära kõik kasutajad, kes osalevad valitud projektis",
+    description = "Kande tulemus: leitakse andmevaasist kõik kasutajad, kes on seotud valitud projektiga")
 
-    @GetMapping("/projectRoles")
-    public void getAllProjectRoles() {
-        projectService.getAllProjectRoles();
+    public List<ProjectUserInfoExtended> getCompanyUsersInProject(@PathVariable Integer projectId) {
+        return projectService.getProjectUsers(projectId);
+
+    }
+
+    @GetMapping("/project-roles")
+    public List<ProjectRole> getAllProjectRoles() {
+        return projectService.getAllProjectRoles();
+    }
+
+
+    @PostMapping("/project/user")
+    public void addProjectUser(@RequestBody AddProjectUserRequest request) {
+        projectService.addProjectUser(request);
     }
 }

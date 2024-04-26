@@ -1,19 +1,22 @@
 package com.valiit.pvback.business.project;
 
 import com.valiit.pvback.business.Status;
-import com.valiit.pvback.business.project.dto.ProjectGeneralInfo;
-import com.valiit.pvback.business.project.dto.ProjectInfo;
-import com.valiit.pvback.business.project.dto.ProjectUserInfo;
+import com.valiit.pvback.business.project.dto.*;
+import com.valiit.pvback.business.projectoverview.dto.ProcessInfo;
+import com.valiit.pvback.domain.process.*;
+import com.valiit.pvback.domain.process.Process;
 import com.valiit.pvback.domain.project.Project;
 import com.valiit.pvback.domain.project.ProjectMapper;
 import com.valiit.pvback.domain.project.ProjectRepository;
 import com.valiit.pvback.domain.project.projectrole.ProjectRole;
+import com.valiit.pvback.domain.project.projectrole.ProjectRoleMapper;
 import com.valiit.pvback.domain.project.projectrole.ProjectRoleRepository;
 import com.valiit.pvback.domain.project.projectuser.ProjectUser;
 import com.valiit.pvback.domain.project.projectuser.ProjectUserMapper;
 import com.valiit.pvback.domain.project.projectuser.ProjectUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -25,8 +28,11 @@ public class ProjectService {
 
     private final ProjectMapper projectMapper;
     private final ProjectUserMapper projectUserMapper;
+    private final ProcessMapper processMapper;
     private final ProjectUserRepository projectUserRepository;
+    private final ProcessRepository processRepository;
     private final ProjectRoleRepository projectRoleRepository;
+    private final ProjectRoleMapper projectRoleMapper;
 
     public void createAndSaveProject(ProjectInfo projectInfo) {
         Project project = projectMapper.toProject(projectInfo);
@@ -57,8 +63,20 @@ public class ProjectService {
         }
     }
 
-    public void getAllProjectRoles() {
-        List<ProjectRole> projectRoles = projectRoleRepository.findAll();
-        return ;
+    public List<ProjectUserInfoExtended> getProjectUsers(Integer projectId) {
+        List<ProjectUser> projectUsers = projectUserRepository.findProjectUsersBy(projectId);
+        return projectUserMapper.toExtendedProjectUserInfos(projectUsers);
     }
+
+    public void addProjectUser(@RequestBody AddProjectUserRequest request) {
+        ProjectUser projectUser = projectUserMapper.toProjectUser(request);
+        projectUserRepository.save(projectUser);
+    }
+
+
+    public List<ProjectRole> getAllProjectRoles() {
+        return projectRoleRepository.findAll();
+    }
+
+
 }
