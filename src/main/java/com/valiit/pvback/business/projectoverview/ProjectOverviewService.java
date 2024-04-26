@@ -32,14 +32,11 @@ public class ProjectOverviewService {
     public ProjectOverviewInfos getProjectOverview(Integer projectId) {
         ProjectOverviewInfos projectOverviewInfos = new ProjectOverviewInfos();
 
-        // todo: processRepository ja projectId abil leida ülesse kõik projekti protsessid 'process'
-        // todo: processMapperi toProcessInfos() abil luua List<ProcessInfo> processInfos; ja panna projectOverview külge
-
         List<Process> processes = processRepository.findAllProcessesBy(projectId);
         List<ProcessInfo> processInfos = processMapper.toProcessInfos(processes);
         projectOverviewInfos.setProcessInfos(processInfos);
 
-        List<Part> parts = processPartRepository.findPartsByProjectId(projectId);
+        List<Part> parts = processPartRepository.findDistinctPartsBy(projectId);
         List<PartInfo> partInfos = partMapper.toPartInfos(parts);
         projectOverviewInfos.setPartInfos(partInfos);
 
@@ -48,18 +45,10 @@ public class ProjectOverviewService {
             List<ProcessPartInfo> processPartInfos = processPartMapper.toProcessPartInfos(processParts);
             partInfo.setProcessPartInfos(processPartInfos);
         }
+
         return projectOverviewInfos;
 
-        // todo: processPartRepository ja findPartsBy(projectId) abil leida ülesse kõik projekti partid 'parts'
-        // todo: partMapperi abil luua List<PartInfo> partInfos ja panna projectOverview külge
 
-
-        // todo: for tsükkel partInfos listist
-        // todo: igal tsüklil partInfo.getPartId() ja processPartRepository.findProcessPartsBy(partId); abil,
-        //  leiame List<ProcessPart> 'processParts' listi
-
-        // todo: ProcessPartMapper.toProcessPartInfos() abil mapime objektid ümber List<ProcessPartInfo>  'processPartInfos'
-        // todo: ja paneme tulemuse partInfo külge
 
 
         // todo: FINITO, JEEEEEE!!!!!!!
