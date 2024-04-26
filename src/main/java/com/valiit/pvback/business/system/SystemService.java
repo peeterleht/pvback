@@ -1,6 +1,5 @@
 package com.valiit.pvback.business.system;
 
-import com.valiit.pvback.business.Status;
 import com.valiit.pvback.business.system.dto.*;
 import com.valiit.pvback.domain.company.subscriptiontype.SubscriptionType;
 import com.valiit.pvback.domain.company.subscriptiontype.SubscriptionTypeRepository;
@@ -25,7 +24,6 @@ import com.valiit.pvback.domain.system.projectexample.SysProjectExampleRepositor
 import com.valiit.pvback.domain.system.tryout.SysTryOut;
 import com.valiit.pvback.domain.system.tryout.SysTryOutMapper;
 import com.valiit.pvback.domain.system.tryout.SysTryOutRepository;
-import com.valiit.pvback.infrastructure.validation.ValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -13,4 +13,5 @@ public interface ProcessMapper {
     ProcessInfo toProcessInfo(Process process);
 
     List<ProcessInfo> toProcessInfos(List<Process> processes);
+
 }

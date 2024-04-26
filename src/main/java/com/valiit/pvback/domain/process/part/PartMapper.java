@@ -11,14 +11,11 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface PartMapper {
-
-
     @Mapping(source = "id", target = "partId")
     @Mapping(source = "volume", target = "volume")
     @Mapping(source = "name", target = "partName")
-    @Mapping(source = "endDeadline", target = "deadlineWeek")
+//    @Mapping(source = "endDeadline", target = "deadlineWeek")
     PartInfo toPartInfo(Part part);
 
     List<PartInfo> toPartInfos(List<Part> parts);
-
 }

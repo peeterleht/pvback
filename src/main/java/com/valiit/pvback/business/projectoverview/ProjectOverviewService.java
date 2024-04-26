@@ -2,12 +2,15 @@ package com.valiit.pvback.business.projectoverview;
 
 import com.valiit.pvback.business.projectoverview.dto.PartInfo;
 import com.valiit.pvback.business.projectoverview.dto.ProcessInfo;
-import com.valiit.pvback.business.projectoverview.dto.ProjectOverview;
+import com.valiit.pvback.business.projectoverview.dto.ProcessPartInfo;
+import com.valiit.pvback.business.projectoverview.dto.ProjectOverviewInfos;
 import com.valiit.pvback.domain.process.Process;
 import com.valiit.pvback.domain.process.ProcessMapper;
 import com.valiit.pvback.domain.process.ProcessRepository;
 import com.valiit.pvback.domain.process.part.Part;
 import com.valiit.pvback.domain.process.part.PartMapper;
+import com.valiit.pvback.domain.process.part.PartRepository;
+import com.valiit.pvback.domain.process.processpart.ProcessPart;
 import com.valiit.pvback.domain.process.processpart.ProcessPartMapper;
 import com.valiit.pvback.domain.process.processpart.ProcessPartRepository;
 import lombok.AllArgsConstructor;
@@ -22,22 +25,31 @@ public class ProjectOverviewService {
     private final ProcessRepository processRepository;
     private final ProcessMapper processMapper;
     private final PartMapper partMapper;
+    private final PartRepository partRepository;
     private final ProcessPartRepository processPartRepository;
+    private final ProcessPartMapper processPartMapper;
 
-    public ProjectOverview getProjectOverview(Integer projectId) {
-        ProjectOverview projectOverview = new ProjectOverview();
+    public ProjectOverviewInfos getProjectOverview(Integer projectId) {
+        ProjectOverviewInfos projectOverviewInfos = new ProjectOverviewInfos();
 
         // todo: processRepository ja projectId abil leida ülesse kõik projekti protsessid 'process'
         // todo: processMapperi toProcessInfos() abil luua List<ProcessInfo> processInfos; ja panna projectOverview külge
 
         List<Process> processes = processRepository.findAllProcessesBy(projectId);
         List<ProcessInfo> processInfos = processMapper.toProcessInfos(processes);
-        projectOverview.setProcessInfos(processInfos);
+        projectOverviewInfos.setProcessInfos(processInfos);
 
-        List<Part> parts = processPartRepository.findPartsBy(projectId);
+        List<Part> parts = processPartRepository.findPartsByProjectId(projectId);
         List<PartInfo> partInfos = partMapper.toPartInfos(parts);
-        projectOverview.setPartInfos(partInfos);
+        projectOverviewInfos.setPartInfos(partInfos);
 
+        for (Part part : parts) {
+            PartInfo partInfo = projectOverviewInfos.getPartInfos().get(part.getId());
+            List<ProcessPart> processParts = processPartRepository.findProcessPartsBy(part.getId());
+            List<ProcessPartInfo> processPartInfos = processPartMapper.toProcessPartInfos(processParts);
+            partInfo.setProcessPartInfos(processPartInfos);
+        }
+        return projectOverviewInfos;
 
         // todo: processPartRepository ja findPartsBy(projectId) abil leida ülesse kõik projekti partid 'parts'
         // todo: partMapperi abil luua List<PartInfo> partInfos ja panna projectOverview külge
@@ -54,7 +66,5 @@ public class ProjectOverviewService {
 
         // todo: FINITO, JEEEEEE!!!!!!!
 
-
-        return projectOverview;
     }
 }

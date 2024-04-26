@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectOverview {
+public class ProjectOverviewInfos {
     private List<ProcessInfo> processInfos;
     private List<PartInfo> partInfos;
 }
