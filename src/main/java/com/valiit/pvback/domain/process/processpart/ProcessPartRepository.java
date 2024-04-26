@@ -3,7 +3,6 @@ package com.valiit.pvback.domain.process.processpart;
 import com.valiit.pvback.domain.process.part.Part;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ public interface ProcessPartRepository extends JpaRepository<ProcessPart, Intege
 
 
     @Query("select distinct p.part from ProcessPart p where p.process.project.id = :projectId")
-    List<Part> findPartsByProjectId(Integer projectId);
+    List<Part> findDistinctPartsBy(Integer projectId);
 
     @Query("select p from ProcessPart p where p.part.id = :partId")
     List<ProcessPart> findProcessPartsBy(Integer partId);
